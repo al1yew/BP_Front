@@ -13,6 +13,113 @@
   background-color: white;
 }
 
+:root {
+  --robotomedium: RobotoMedium;
+}
+
+#dropdownkeeper {
+  margin: 100px 0;
+}
+
+#dropdownkeeper p {
+  font-family: var(--robotomedium);
+  font-size: 20px;
+  color: black;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#dropdownkeeper .all {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: var(--robotomedium);
+  height: 100vh;
+}
+
+#dropdownkeeper .all .dropdownkeeper {
+  font-size: 17px;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  border: 0.7px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_main span:nth-child(2) {
+  text-align: right;
+}
+
+#dropdownkeeper .all .dropdownkeeper .show_dropdown {
+  top: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_menu {
+  margin-top: 5px;
+  cursor: pointer;
+  border: 0.7px solid black;
+  overflow: hidden;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  max-height: 180px;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li {
+  padding: 5px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  border-bottom: 0.5px solid black;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li:hover {
+  background-color: lightblue;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li:last-child {
+  border: none;
+}
+
+#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li .radio_inps {
+  display: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -386,6 +493,7 @@ a:hover {
   top: 0;
   left: 0;
   background-color: white;
+  z-index: 500000;
   padding: 10px 0;
   margin: 0;
   -webkit-box-shadow: 0px 1px 15px 1px #009900;
@@ -413,6 +521,7 @@ a:hover {
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 500000;
   background-color: white;
   padding: 10px 0;
   margin: 0;

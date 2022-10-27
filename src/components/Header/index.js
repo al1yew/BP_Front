@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../images/sticker.jpg";
 
-export function Header() {
+export default function Header() {
     return (
         <>
             <header className="header">
