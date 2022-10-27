@@ -1,0 +1,13 @@
+.errorapp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 432;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.4);
+    width: 60%;
+    padding: 20px 50px;
+    color: black;
+    background-color: white;
+}
+
