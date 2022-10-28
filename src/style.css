@@ -42,7 +42,7 @@
       -ms-flex-align: center;
           align-items: center;
   font-family: var(--robotomedium);
-  height: 100vh;
+  height: 65vh;
 }
 
 #dropdownkeeper .all .dropdownkeeper {
@@ -91,6 +91,7 @@
   visibility: hidden;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  background-color: white;
 }
 
 #dropdownkeeper .all .dropdownkeeper .dropdown_menu ul {

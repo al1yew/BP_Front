@@ -36,17 +36,15 @@ export default function Assessment() {
             }))
     }, []);
 
-    console.log(data)
-
     return (
         <section id='dropdownkeeper'>
             <div className="container">
                 <div className="row all">
                     <p>Select your options from the dropdowns below in order to decide whether take an assessment or not.</p>
                     <form method='post' className='row all col-lg-12 col-12'>
-                        <Dropdown />
-                        <Dropdown />
-                        <Dropdown />
+                        <Dropdown query={data.distances} name={"Distances"} />
+                        <Dropdown query={data.frequencies} name={"Frequencies"} />
+                        <Dropdown query={data.weights} name={"Weights"} />
                         <button type="submit" className='col-lg-4 col-5-8 btn btn-primary'>Need to Assess</button>
                         <button type="submit" className='col-lg-4 col-5-8 btn btn-danger'>No Need to Assess</button>
                     </form>
