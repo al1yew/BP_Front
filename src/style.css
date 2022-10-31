@@ -30,6 +30,17 @@
   text-align: center;
 }
 
+#dropdownkeeper .error {
+  font-size: 22px;
+  color: red;
+  font-weight: 600;
+  font-family: var(--robotomedium);
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+  border: 0.8px solid red;
+}
+
 #dropdownkeeper .all {
   width: 100%;
   display: -webkit-box;
@@ -42,7 +53,7 @@
       -ms-flex-align: center;
           align-items: center;
   font-family: var(--robotomedium);
-  height: 65vh;
+  height: 60vh;
 }
 
 #dropdownkeeper .all .dropdownkeeper {
@@ -117,7 +128,7 @@
   border: none;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li .radio_inps {
+#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li input {
   display: none;
 }
 

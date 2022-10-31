@@ -20,19 +20,24 @@ export default function Dropdown(props) {
         });
     }
 
-    function handlePlaceholder(elementName) {
+    function handleChange(forPlaceholder, id, entity) {
+        handlePlaceholder(forPlaceholder);
+        props.setValues(id, entity);
+    }
+
+    function handlePlaceholder(forPlaceholder) {
         setDropdown(prevValue => {
             return {
                 ...prevValue,
-                placeholder: elementName,
+                placeholder: forPlaceholder,
                 isOpen: !prevValue.isOpen
             }
         });
     }
 
     useEffect(() => {
-
         document.addEventListener("mousedown", handleOutsideClicks);
+
         return () => {
             document.removeEventListener("mousedown", handleOutsideClicks);
         };
@@ -62,14 +67,15 @@ export default function Dropdown(props) {
             </div>
             <div className={`col-lg-12 col-12 dropdown_menu ${dropdown.isOpen && "show_dropdown"}`} >
                 <ul>
-                    <li onClick={() => handlePlaceholder(props.name)}>
-                        {props.name}...
+                    <li id='0' onClick={() => handleChange(props.name, 0, "")}>
+                        {props.name}
                     </li>
-                    {props.query.map(element => {
-                        return <li key={element.id} onClick={() => handlePlaceholder(element.name)}>
-                            <input type="radio" name="dist" className='radio_inps' />
-                            {element.name}
-                        </li>
+                    {props.query.map((element, index) => {
+                        return (
+                            <li key={index} id={element.id} onClick={() => handleChange(element.name, element.id, props.name)} >
+                                {element.name}
+                            </li>
+                        )
                     })}
                 </ul>
             </div>

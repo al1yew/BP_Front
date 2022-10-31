@@ -14,19 +14,31 @@
         text-align: center;
     }
 
+    .error {
+        font-size: 22px;
+        color: red;
+        font-weight: 600;
+        font-family: var(--robotomedium);
+        padding: 8px;
+        width: 100%;
+        text-align: center;
+        border: 0.8px solid red;
+    }
+
     .all {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-family: var(--robotomedium);
-        height: 65vh;
+        height: 60vh;
 
         .dropdownkeeper {
             font-size: 17px;
             position: relative;
             padding: 0;
             margin: 0;
+
 
             .dropdown_main {
                 display: flex;
@@ -43,6 +55,7 @@
                     }
                 }
             }
+
 
             .show_dropdown {
                 top: 100% !important;
@@ -84,7 +97,7 @@
                             border: none;
                         }
 
-                        .radio_inps {
+                        input {
                             display: none;
                         }
                     }
