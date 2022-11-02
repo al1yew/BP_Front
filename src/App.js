@@ -13,10 +13,10 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/manage" element={<Home />} />
 
-        <Route path="/assessments" element={<Assessments />} />
-        <Route path="/assessments/create" element={<Create />} />
+        <Route path="/manage/assessments" element={<Assessments />} />
+        <Route path="/manage/assessments/create" element={<Create />} />
 
         <Route path="*" element={<NotFound />} />
 

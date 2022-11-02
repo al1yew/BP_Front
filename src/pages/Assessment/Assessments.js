@@ -32,7 +32,27 @@ export default function Assessments() {
                             <div className="col-lg-2 col-3 left">
                                 Assessments
                             </div>
-                            <div className="col-lg-2 col-3 text-end">
+                            <div className="col-lg-6 col-6">
+                                <select>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                                <select>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                                <select>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div className="col-lg-2 col-2 text-end">
                                 <Link to="/assessments/create" className="btn btn-primary">
                                     Create
                                 </Link>
