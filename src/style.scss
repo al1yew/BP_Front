@@ -1,5 +1,4 @@
 @import './components/Dropdown/dropdown';
-@import './components/Table/table';
 @import './components/ErrorBoundary/errorboundary';
 @import './pages/Assessment/assessment';
 
@@ -377,15 +376,73 @@ a {
     margin: 150px 0;
 }
 
+
+.preloader {
+    margin: 0;
+    padding: 0;
+    font-family: ‘Arial Narrow’, sans-serif;
+    font-weight: 100;
+    font-size: 1.1em;
+    color: #a3e1f0;
+
+
+    .let1 {
+        animation: drop 1.2s ease-in-out infinite;
+        animation-delay: 1.2s;
+    }
+
+    .let2 {
+        animation: drop 1.2s ease-in-out infinite;
+        animation-delay: 1.3s;
+    }
+
+    .let3 {
+        animation: drop 1.2s ease-in-out infinite;
+        animation-delay: 1.4s;
+    }
+
+    .let4 {
+        animation: drop 1.2s ease-in-out infinite;
+        animation-delay: 1.5s;
+
+    }
+
+    .let5 {
+        animation: drop 1.2s ease-in-out infinite;
+        animation-delay: 1.6s;
+    }
+
+    .let6 {
+        animation: drop 1.2s ease-in-out infinite;
+        animation-delay: 1.7s;
+    }
+
+    .let7 {
+        animation: drop 1.2s ease-in-out infinite;
+        animation-delay: 1.8s;
+    }
+
+    span {
+        position: relative;
+        top: 0.63em;
+        display: inline-block;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: rotateX(-90deg);
+    }
+}
+
 .homepagediv {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 
     .linktoassessmentorcontactpage {
-        height: 300px;
-        width: 300px;
+        margin: 20px 0;
+        height: 200px;
+        width: 200px;
         font-size: 20px;
         border: 1px solid #98CE00;
         box-shadow: 0px 0px 10px 2px #FFFF00;

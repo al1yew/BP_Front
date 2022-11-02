@@ -2,6 +2,10 @@
     --robotomedium: RobotoMedium;
 }
 
+
+
+//#region create page
+
 #dropdownkeeper {
     margin: 100px 0;
 
@@ -51,6 +55,13 @@
                 font-size: 16px;
                 color: red;
                 font-family: var(--robotomedium);
+                text-align: center;
+            }
+
+            label {
+                font-size: 14px;
+                margin-bottom: 3px;
+                width: 100%;
                 text-align: center;
             }
 
@@ -126,5 +137,30 @@
         }
 
 
+    }
+}
+
+//#region create page
+
+
+//table
+
+#tablecontainer {
+    margin-top: 100px;
+
+    .all {
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            font-size: 25px;
+            color: green;
+        }
+
+        .tablecontainer {
+            width: 100%;
+        }
     }
 }

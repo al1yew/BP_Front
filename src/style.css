@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .errorapp {
   position: absolute;
   top: 50%;
@@ -87,6 +88,13 @@
   text-align: center;
 }
 
+#dropdownkeeper .all .allkeeper label {
+  font-size: 14px;
+  margin-bottom: 3px;
+  width: 100%;
+  text-align: center;
+}
+
 #dropdownkeeper .all .allkeeper .dropdownkeeper {
   font-size: 17px;
   position: relative;
@@ -161,6 +169,31 @@
 
 #dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_menu ul li input {
   display: none;
+}
+
+#tablecontainer {
+  margin-top: 100px;
+}
+
+#tablecontainer .all .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: green;
+}
+
+#tablecontainer .all .tablecontainer {
+  width: 100%;
 }
 
 * {
@@ -598,6 +631,74 @@ a:hover {
   margin: 150px 0;
 }
 
+.preloader {
+  margin: 0;
+  padding: 0;
+  font-family: ‘Arial Narrow’, sans-serif;
+  font-weight: 100;
+  font-size: 1.1em;
+  color: #a3e1f0;
+}
+
+.preloader .let1 {
+  -webkit-animation: drop 1.2s ease-in-out infinite;
+          animation: drop 1.2s ease-in-out infinite;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+
+.preloader .let2 {
+  -webkit-animation: drop 1.2s ease-in-out infinite;
+          animation: drop 1.2s ease-in-out infinite;
+  -webkit-animation-delay: 1.3s;
+          animation-delay: 1.3s;
+}
+
+.preloader .let3 {
+  -webkit-animation: drop 1.2s ease-in-out infinite;
+          animation: drop 1.2s ease-in-out infinite;
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+
+.preloader .let4 {
+  -webkit-animation: drop 1.2s ease-in-out infinite;
+          animation: drop 1.2s ease-in-out infinite;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+.preloader .let5 {
+  -webkit-animation: drop 1.2s ease-in-out infinite;
+          animation: drop 1.2s ease-in-out infinite;
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+
+.preloader .let6 {
+  -webkit-animation: drop 1.2s ease-in-out infinite;
+          animation: drop 1.2s ease-in-out infinite;
+  -webkit-animation-delay: 1.7s;
+          animation-delay: 1.7s;
+}
+
+.preloader .let7 {
+  -webkit-animation: drop 1.2s ease-in-out infinite;
+          animation: drop 1.2s ease-in-out infinite;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+
+.preloader span {
+  position: relative;
+  top: 0.63em;
+  display: inline-block;
+  text-transform: uppercase;
+  opacity: 0;
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
+
 .homepagediv {
   width: 100%;
   display: -webkit-box;
@@ -608,11 +709,14 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .homepagediv .linktoassessmentorcontactpage {
-  height: 300px;
-  width: 300px;
+  margin: 20px 0;
+  height: 200px;
+  width: 200px;
   font-size: 20px;
   border: 1px solid #98CE00;
   -webkit-box-shadow: 0px 0px 10px 2px #FFFF00;

@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Dropdown from "../../components/Dropdown";
 
-export default function Assessment() {
+export default function Create() {
 
     //#region explanation
     // 1. state for getting data from backend
@@ -125,7 +124,26 @@ export default function Assessment() {
             })
     }
 
-    //7
+    // //7
+    // function handleSpanClick(needToAssess) {
+    //     setSubmitValues(prevValue => {
+    //         return {
+    //             ...prevValue,
+    //             NeedToAssess: needToAssess
+    //         }
+    //     });
+
+    //     setRender(prevValue => !prevValue)
+    // }
+
+    // //8
+    // useEffect(() => {
+    //     setErrorObj(null)
+
+    //     axios.post('http://localhost:37234/api/assessment', submitValues)
+    //         .catch(err => setErrorObj(err?.response?.data))
+    // }, [render])
+
     function handleSpanClick(needToAssess) {
         setSubmitValues(prevValue => {
             return {
@@ -134,33 +152,37 @@ export default function Assessment() {
             }
         });
 
-        setRender(prevValue => !prevValue)
+        submitToApi();
     }
 
-    //8
-    useEffect(() => {
-        setErrorObj(null)
+    function submitToApi() {
+        // setErrorObj(null)
 
-        axios.post('http://localhost:37234/api/assessment', submitValues)
-            .catch(err => setErrorObj(err?.response?.data))
-    }, [render])
+        console.log(submitValues)
 
+        // axios.post('http://localhost:37234/api/assessment', submitValues)
+        // .catch(err => setErrorObj(err?.response?.data))
+    }
     //9
     return (
         <section id='dropdownkeeper'>
             <div className="container">
                 <div className="row all">
-                    <p>Select your options from the dropdowns below in order to decide whether take an assessment or not.</p>
+                    <p>Select your options from the dropdowns below in order to decide whether take an assessment or not. <br />
+                        Information will be passed to database and will be used in User side.</p>
                     <div className='row all col-lg-12 col-12'>
                         <div className="col-lg-3-8 col-3-8 allkeeper">
+                            <label>Weights</label>
                             <Dropdown query={data.weights} name={"Weight"} setValues={handleSubmitValues} />
                             <p className="errorObj thirderr col-lg-12 col-12">{errorObj?.errors?.WeightId}</p>
                         </div>
                         <div className="col-lg-3-8 col-3-8 allkeeper">
+                            <label>Distances</label>
                             <Dropdown query={data.distances} name={"Distance"} setValues={handleSubmitValues} />
                             <p className="errorObj firsterr col-lg-12 col-12">{errorObj?.errors?.DistanceId}</p>
                         </div>
                         <div className="col-lg-3-8 col-3-8 allkeeper">
+                            <label>Frequencies</label>
                             <Dropdown query={data.frequencies} name={"Frequency"} setValues={handleSubmitValues} />
                             <p className="errorObj seconderr col-lg-12 col-12">{errorObj?.errors?.FrequencyId}</p>
                         </div>
