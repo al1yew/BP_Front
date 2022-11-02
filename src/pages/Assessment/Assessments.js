@@ -6,7 +6,7 @@ export default function Assessments() {
 
     const [assessments, setAssessments] = useState([]);
 
-    const [errorObj, setErrorObj] = useState();
+    const [errorObj, setErrorObj] = useState("");
 
     useEffect(() => {
         axios.get("http://localhost:37234/api/assessments")
@@ -19,7 +19,8 @@ export default function Assessments() {
 
     function handleDelete(id) {
         axios.delete(`http://localhost:37234/api/assessments/${id}`)
-            .then(res => res.data ? setAssessments(res.data) : setErrorObj(res?.response?.data))
+            .then(res => setAssessments(res.data))
+            .catch(err => setErrorObj(err.response.data))
     }
 
     return (
@@ -56,8 +57,8 @@ export default function Assessments() {
                                     <tr>
                                         <th scope="col" className="text-center">No</th>
                                         <th scope="col" className="text-center">Weights</th>
-                                        <th scope="col" className="text-center">Frequencies</th>
                                         <th scope="col" className="text-center">Distances</th>
+                                        <th scope="col" className="text-center">Frequencies</th>
                                         <th scope="col" className="text-center">Need to assess</th>
                                         <th scope="col" className="text-center">Update</th>
                                         <th scope="col" className="text-center">Delete</th>
@@ -67,10 +68,10 @@ export default function Assessments() {
                                     {assessments && assessments.map((data, index) => {
                                         return (
                                             <tr key={data.id}>
-                                                <th scope="row" className="text-center">{index}</th>
+                                                <th scope="row" className="text-center">{index + 1}</th>
                                                 <td className="text-center">{data.weight.name}</td>
-                                                <td className="text-center">{data.frequency.name}</td>
                                                 <td className="text-center">{data.distance.name}</td>
+                                                <td className="text-center">{data.frequency.name}</td>
                                                 <td className={data.needToAssess ? "text-success text-center" : "text-danger text-center"}>
                                                     {data.needToAssess ? "Yes" : "No"}
                                                 </td>
