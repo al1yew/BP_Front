@@ -14,17 +14,6 @@
         text-align: center;
     }
 
-    .error {
-        font-size: 22px;
-        color: red;
-        font-weight: 600;
-        font-family: var(--robotomedium);
-        padding: 8px;
-        width: 100%;
-        text-align: center;
-        border: 0.8px solid red;
-    }
-
     .all {
         width: 100%;
         display: flex;
@@ -32,77 +21,110 @@
         align-items: center;
         font-family: var(--robotomedium);
         height: 60vh;
+        position: relative;
 
-        .dropdownkeeper {
-            font-size: 17px;
+        .errorizservisa {
+            font-size: 18px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: red;
+            font-family: var(--robotomedium);
+            z-index: -3;
+            text-align: center;
+        }
+
+        .allkeeper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
             position: relative;
-            padding: 0;
-            margin: 0;
 
+            .errorObj {
+                position: absolute;
+                top: 120%;
+                z-index: -3;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 16px;
+                color: red;
+                font-family: var(--robotomedium);
+                text-align: center;
+            }
 
-            .dropdown_main {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                cursor: pointer;
-                border: 0.7px solid black;
-                border-radius: 5px;
-                padding: 5px;
+            .dropdownkeeper {
+                font-size: 17px;
+                position: relative;
+                padding: 0;
+                margin: 0;
 
-                span {
-                    &:nth-child(2) {
-                        text-align: right;
+                .dropdown_main {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    cursor: pointer;
+                    border: 0.7px solid black;
+                    border-radius: 5px;
+                    padding: 5px;
+
+                    span {
+                        &:nth-child(2) {
+                            text-align: right;
+                        }
                     }
                 }
-            }
 
+                .show_dropdown {
+                    top: 100% !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                }
 
-            .show_dropdown {
-                top: 100% !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
+                .dropdown_menu {
+                    margin-top: 5px;
+                    cursor: pointer;
+                    border: 0.7px solid black;
+                    overflow: hidden;
+                    border-radius: 5px;
+                    position: absolute;
+                    top: 50%;
+                    left: 0%;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: 0.1s;
+                    background-color: white;
 
-            .dropdown_menu {
-                margin-top: 5px;
-                cursor: pointer;
-                border: 0.7px solid black;
-                overflow: hidden;
-                border-radius: 5px;
-                position: absolute;
-                top: 50%;
-                left: 0%;
-                opacity: 0;
-                visibility: hidden;
-                transition: 0.2s;
-                background-color: white;
+                    ul {
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+                        overflow-y: scroll;
+                        max-height: 180px;
 
-                ul {
-                    list-style: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow-y: scroll;
-                    max-height: 180px;
+                        li {
+                            padding: 5px;
+                            transition: 0.1s;
+                            border-bottom: 0.5px solid black;
 
-                    li {
-                        padding: 5px;
-                        transition: 0.1s;
-                        border-bottom: 0.5px solid black;
+                            &:hover {
+                                background-color: lightblue;
+                            }
 
-                        &:hover {
-                            background-color: lightblue;
-                        }
+                            &:last-child {
+                                border: none;
+                            }
 
-                        &:last-child {
-                            border: none;
-                        }
-
-                        input {
-                            display: none;
+                            input {
+                                display: none;
+                            }
                         }
                     }
                 }
             }
         }
+
+
     }
 }

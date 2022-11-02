@@ -30,17 +30,6 @@
   text-align: center;
 }
 
-#dropdownkeeper .error {
-  font-size: 22px;
-  color: red;
-  font-weight: 600;
-  font-family: var(--robotomedium);
-  padding: 8px;
-  width: 100%;
-  text-align: center;
-  border: 0.8px solid red;
-}
-
 #dropdownkeeper .all {
   width: 100%;
   display: -webkit-box;
@@ -54,16 +43,58 @@
           align-items: center;
   font-family: var(--robotomedium);
   height: 60vh;
+  position: relative;
 }
 
-#dropdownkeeper .all .dropdownkeeper {
+#dropdownkeeper .all .errorizservisa {
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: red;
+  font-family: var(--robotomedium);
+  z-index: -3;
+  text-align: center;
+}
+
+#dropdownkeeper .all .allkeeper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+#dropdownkeeper .all .allkeeper .errorObj {
+  position: absolute;
+  top: 120%;
+  z-index: -3;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 16px;
+  color: red;
+  font-family: var(--robotomedium);
+  text-align: center;
+}
+
+#dropdownkeeper .all .allkeeper .dropdownkeeper {
   font-size: 17px;
   position: relative;
   padding: 0;
   margin: 0;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_main {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,17 +110,17 @@
   padding: 5px;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_main span:nth-child(2) {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_main span:nth-child(2) {
   text-align: right;
 }
 
-#dropdownkeeper .all .dropdownkeeper .show_dropdown {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .show_dropdown {
   top: 100% !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_menu {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_menu {
   margin-top: 5px;
   cursor: pointer;
   border: 0.7px solid black;
@@ -100,12 +131,12 @@
   left: 0%;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
   background-color: white;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -113,22 +144,22 @@
   max-height: 180px;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_menu ul li {
   padding: 5px;
   -webkit-transition: 0.1s;
   transition: 0.1s;
   border-bottom: 0.5px solid black;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li:hover {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_menu ul li:hover {
   background-color: lightblue;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li:last-child {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_menu ul li:last-child {
   border: none;
 }
 
-#dropdownkeeper .all .dropdownkeeper .dropdown_menu ul li input {
+#dropdownkeeper .all .allkeeper .dropdownkeeper .dropdown_menu ul li input {
   display: none;
 }
 
