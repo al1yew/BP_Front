@@ -28,10 +28,12 @@ export default function Assessments() {
 
     //#region effects
 
-    useEffect(() => {
-        axios.get("http://localhost:37234/api/assessments")
-            .then(res => setAssessments(res.data))
-    }, [])
+    // useEffect(() => {
+    //     axios.get("http://localhost:37234/api/assessments")
+    //         .then(res => setAssessments(res.data))
+    // }, [])
+    //okazalos shto ne nujno daje eeto delat, useeffect dla sorta delayet vse pri pervom rendere stranici, ya dumayu v c# toje 
+    //mojno vse zapixnut v odin action i ne delat otdelno sortdata i GetAll
 
     useEffect(() => {
         axios.get("http://localhost:37234/api/assessments/getalldata")
@@ -57,11 +59,11 @@ export default function Assessments() {
             }
         })
     }
-    console.log(formData);
+
     useEffect(() => {
         axios.post(`http://localhost:37234/api/assessments/sortdata`, formData)
-        .then(res => setAssessments(res.data))
-        .catch(err => setErrorObj(err?.response?.data))
+            .then(res => setAssessments(res.data))
+            .catch(err => setErrorObj(err?.response?.data))
     }, [formData])
 
     //#endregion CRUD
