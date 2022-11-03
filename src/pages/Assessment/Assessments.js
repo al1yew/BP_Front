@@ -13,7 +13,8 @@ export default function Assessments() {
         weightId: 0,
         distanceId: 0,
         frequencyId: 0,
-        needToAssess: 0
+        needToAssess: 0,
+        // showCount: 5
     });
 
     const [data, setData] = useState({
@@ -60,6 +61,8 @@ export default function Assessments() {
         })
     }
 
+    //on pri otkritii stranici sam renderitsa toje naverno ptm shto ya dal emu default state, i mne ne nujen useeffect sverxu, get axios.get
+
     useEffect(() => {
         axios.post(`http://localhost:37234/api/assessments/sortdata`, formData)
             .then(res => setAssessments(res.data))
@@ -74,45 +77,58 @@ export default function Assessments() {
                 <div className="container">
                     <div className="row all">
                         <div className="top col-lg-12 col-12">
+
                             <div className="col-lg-2 col-3 left">
                                 Assessments
                             </div>
-                            <div className="col-lg-6 col-6 middle">
 
-                                <select value={formData.weightId} id="weightId" name="weightId" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                            <div className="col-lg-7 col-7 middle">
+
+                                <select value={formData.weightId} id="weightId" name="weightId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">Weights</option>
                                     {data.weights.length && data.weights.map((entity, index) => {
                                         return <option key={index} value={entity.id} >{entity.name}</option>
                                     })}
                                 </select>
 
-                                <select value={formData.distanceId} id="distanceId" name="distanceId" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                                <select value={formData.distanceId} id="distanceId" name="distanceId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">Distances</option>
                                     {data.distances.length && data.distances.map((entity, index) => {
                                         return <option key={index} value={entity.id} >{entity.name}</option>
                                     })}
                                 </select>
 
-                                <select value={formData.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                                <select value={formData.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">Frequencies</option>
                                     {data.frequencies.length && data.frequencies.map((entity, index) => {
                                         return <option key={index} value={entity.id} >{entity.name}</option>
                                     })}
                                 </select>
 
-                                <select value={formData.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                                <select value={formData.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">All</option>
-                                    <option value="1">True</option>
-                                    <option value="2">False</option>
+                                    <option value="1">Assess</option>
+                                    <option value="2">No Assess</option>
                                 </select>
 
+                                {/* <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-2" onChange={handleSort}>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                </select> */}
+
                             </div>
-                            <div className="col-lg-2 col-2 text-end">
+
+                            <div className="col-lg-1 col-1 text-end">
                                 <Link to="/manage/assessments/create" className="btn btn-primary">
                                     Create
                                 </Link>
                             </div>
-                            {/* {errorObj && <p className="col-lg-12 col-12">{errorObj}</p>} */}
+
+                            {errorObj && <p className="col-lg-12 col-12">{!errorObj.errors && errorObj}</p>}
+
                         </div>
 
                         {!assessments.length &&
