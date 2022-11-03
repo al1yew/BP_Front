@@ -88,29 +88,8 @@ export default function Create() {
 
     //5
     useEffect(() => {
-        axios.get("http://localhost:37234/api/distances")
-            .then(res => setData(prevValue => {
-                return {
-                    ...prevValue,
-                    distances: res.data
-                }
-            }))
-
-        axios.get("http://localhost:37234/api/frequencies")
-            .then(res => setData(prevValue => {
-                return {
-                    ...prevValue,
-                    frequencies: res.data
-                }
-            }))
-
-        axios.get("http://localhost:37234/api/weights")
-            .then(res => setData(prevValue => {
-                return {
-                    ...prevValue,
-                    weights: res.data
-                }
-            }))
+        axios.get("http://localhost:37234/api/assessments/getalldata")
+            .then(res => setData(res.data))
     }, []);
 
     //6

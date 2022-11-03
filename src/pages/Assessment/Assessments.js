@@ -1,27 +1,70 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Assessments() {
 
+    //#region states and navigation
     const [assessments, setAssessments] = useState([]);
 
     const [errorObj, setErrorObj] = useState("");
+
+    const [formData, setFormData] = useState({
+        weightId: 0,
+        distanceId: 0,
+        frequencyId: 0,
+        needToAssess: 0
+    });
+
+    const [data, setData] = useState({
+        distances: [],
+        frequencies: [],
+        weights: []
+    });
+
+    const navigate = useNavigate();
+
+    //#endregion states and navigation
+
+    //#region effects
 
     useEffect(() => {
         axios.get("http://localhost:37234/api/assessments")
             .then(res => setAssessments(res.data))
     }, [])
 
-    function handleUpdate(id) {
-        console.log(id);
-    }
+    useEffect(() => {
+        axios.get("http://localhost:37234/api/assessments/getalldata")
+            .then(res => setData(res.data))
+    }, [])
+
+    //#endregion effects
+
+    //#region CRUD
 
     function handleDelete(id) {
         axios.delete(`http://localhost:37234/api/assessments/${id}`)
             .then(res => setAssessments(res.data))
             .catch(err => setErrorObj(err.response.data))
     }
+
+    function handleSort(e) {
+        setFormData(prevValue => {
+            const { name, value } = e.target
+            return {
+                ...prevValue,
+                [name]: parseInt(value)
+            }
+        })
+    }
+    console.log(formData);
+    useEffect(() => {
+        axios.post(`http://localhost:37234/api/assessments/sortdata`, formData)
+        .then(res => setAssessments(res.data))
+        .catch(err => setErrorObj(err?.response?.data))
+    }, [formData])
+
+    //#endregion CRUD
 
     return (
         <div className="p-3">
@@ -32,31 +75,42 @@ export default function Assessments() {
                             <div className="col-lg-2 col-3 left">
                                 Assessments
                             </div>
-                            <div className="col-lg-6 col-6">
-                                <select>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
+                            <div className="col-lg-6 col-6 middle">
+
+                                <select value={formData.weightId} id="weightId" name="weightId" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                                    <option value="0">Weights</option>
+                                    {data.weights.length && data.weights.map((entity, index) => {
+                                        return <option key={index} value={entity.id} >{entity.name}</option>
+                                    })}
                                 </select>
-                                <select>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
+
+                                <select value={formData.distanceId} id="distanceId" name="distanceId" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                                    <option value="0">Distances</option>
+                                    {data.distances.length && data.distances.map((entity, index) => {
+                                        return <option key={index} value={entity.id} >{entity.name}</option>
+                                    })}
                                 </select>
-                                <select>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                    <option value=""></option>
+
+                                <select value={formData.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                                    <option value="0">Frequencies</option>
+                                    {data.frequencies.length && data.frequencies.map((entity, index) => {
+                                        return <option key={index} value={entity.id} >{entity.name}</option>
+                                    })}
                                 </select>
+
+                                <select value={formData.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-8 col-2-8" onChange={handleSort}>
+                                    <option value="0">All</option>
+                                    <option value="1">True</option>
+                                    <option value="2">False</option>
+                                </select>
+
                             </div>
                             <div className="col-lg-2 col-2 text-end">
-                                <Link to="/assessments/create" className="btn btn-primary">
+                                <Link to="/manage/assessments/create" className="btn btn-primary">
                                     Create
                                 </Link>
                             </div>
+                            {/* {errorObj && <p className="col-lg-12 col-12">{errorObj}</p>} */}
                         </div>
 
                         {!assessments.length &&
@@ -99,7 +153,7 @@ export default function Assessments() {
                                                     <button
                                                         type="button"
                                                         className="btn btn-warning"
-                                                        onClick={() => handleUpdate(data.id)}
+                                                        onClick={() => navigate(`/manage/assessments/update/${data.id}`)}
                                                     >
                                                         Update
                                                     </button>

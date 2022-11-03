@@ -155,8 +155,17 @@
             align-items: center;
             flex-wrap: wrap;
             margin-bottom: 20px;
-            font-size: 25px;
-            color: green;
+
+            .left {
+                font-size: 25px;
+                color: green;
+            }
+
+            .middle {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
         }
 
         .tablecontainer {
