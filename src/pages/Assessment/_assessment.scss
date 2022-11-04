@@ -2,8 +2,6 @@
     --robotomedium: RobotoMedium;
 }
 
-
-
 //#region create page
 
 #dropdownkeeper {
@@ -143,33 +141,3 @@
 //#region create page
 
 
-//table
-
-#tablecontainer {
-    margin-top: 100px;
-
-    .all {
-        .top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-
-            .left {
-                font-size: 25px;
-                color: green;
-            }
-
-            .middle {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-            }
-        }
-
-        .tablecontainer {
-            width: 100%;
-        }
-    }
-}

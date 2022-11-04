@@ -1,11 +1,16 @@
 @import './components/Dropdown/dropdown';
 @import './components/ErrorBoundary/errorboundary';
 @import './pages/Assessment/assessment';
+@import './pages/forcreate';
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --robotomedium: RobotoMedium;
 }
 
 div {
@@ -476,6 +481,37 @@ a {
             span {
                 transform: scale(1.2);
             }
+        }
+    }
+}
+
+//table
+
+#tablecontainer {
+    margin-top: 100px;
+
+    .all {
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+
+            .left {
+                font-size: 25px;
+                color: green;
+            }
+
+            .middle {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+        }
+
+        .tablecontainer {
+            width: 100%;
         }
     }
 }

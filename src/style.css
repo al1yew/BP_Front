@@ -171,11 +171,39 @@
   display: none;
 }
 
-#tablecontainer {
+:root {
+  --robotomedium: RobotoMedium;
+}
+
+#createfrequencyweightdistance {
   margin-top: 100px;
 }
 
-#tablecontainer .all .top {
+#createfrequencyweightdistance .all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: var(--robotomedium);
+  height: 60vh;
+  position: relative;
+}
+
+#createfrequencyweightdistance .all p {
+  font-family: var(--robotomedium);
+  font-size: 20px;
+  color: black;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#createfrequencyweightdistance .all form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,29 +213,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-#tablecontainer .all .top .left {
-  font-size: 25px;
-  color: green;
-}
-
-#tablecontainer .all .top .middle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#tablecontainer .all .tablecontainer {
-  width: 100%;
 }
 
 * {
@@ -215,6 +220,10 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+:root {
+  --robotomedium: RobotoMedium;
 }
 
 div {
@@ -779,5 +788,44 @@ a:hover {
 .homepagediv .linktoassessmentorcontactpage:hover span {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+
+#tablecontainer {
+  margin-top: 100px;
+}
+
+#tablecontainer .all .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#tablecontainer .all .top .left {
+  font-size: 25px;
+  color: green;
+}
+
+#tablecontainer .all .top .middle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#tablecontainer .all .tablecontainer {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

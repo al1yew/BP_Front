@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toastr from "toastr";
+import 'toastr/build/toastr.min.css';
 
 export default function Assessments() {
 
     //#region states and navigation
     const [assessments, setAssessments] = useState([]);
-
-    const [errorObj, setErrorObj] = useState("");
 
     const [formData, setFormData] = useState({
         weightId: 0,
@@ -29,14 +29,10 @@ export default function Assessments() {
 
     //#region effects
 
-    // useEffect(() => {
-    //     axios.get("http://localhost:37234/api/assessments")
-    //         .then(res => setAssessments(res.data))
-    // }, [])
-    //okazalos shto ne nujno daje eeto delat, useeffect dla sorta delayet vse pri pervom rendere stranici, ya dumayu v c# toje 
-    //mojno vse zapixnut v odin action i ne delat otdelno sortdata i GetAll
-
     useEffect(() => {
+        axios.get("http://localhost:37234/api/assessments/")
+            .then(res => setAssessments(res.data))
+
         axios.get("http://localhost:37234/api/assessments/getalldata")
             .then(res => setData(res.data))
     }, [])
@@ -48,10 +44,50 @@ export default function Assessments() {
     function handleDelete(id) {
         axios.delete(`http://localhost:37234/api/assessments/${id}`)
             .then(res => setAssessments(res.data))
-            .catch(err => setErrorObj(err.response.data))
+            .catch(err => {
+                if (err?.response?.data?.errors) {
+                    Object.values(err?.response?.data?.errors).forEach(er => {
+                        toastr.error(er)
+                    })
+                }
+                else {
+                    toastr.error(err?.response?.data)
+                }
+            })
+
+        toastr.options = {
+            hideDuration: 300,
+            timeOut: 3000,
+        }
     }
 
     function handleSort(e) {
+        axios.get(`http://localhost:37234/api/assessments/`,
+            {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                params: {
+                    "weightId": e.target.name == "weightId" ? e.target.value : formData.weightId,
+                    "distanceId": e.target.name == "distanceId" ? e.target.value : formData.distanceId,
+                    "frequencyId": e.target.name == "frequencyId" ? e.target.value : formData.frequencyId,
+                    "needToAssess": e.target.name == "needToAssess" ? e.target.value : formData.needToAssess,
+                }
+            })
+            .then(res => setAssessments(res.data))
+            .catch(err => {
+                if (err?.response?.data?.errors) {
+                    Object.values(err?.response?.data?.errors).forEach(er => {
+                        toastr.error(er)
+                    })
+                }
+                else {
+                    toastr.error(err?.response?.data)
+                }
+            })
+
         setFormData(prevValue => {
             const { name, value } = e.target
             return {
@@ -60,15 +96,6 @@ export default function Assessments() {
             }
         })
     }
-
-    //on pri otkritii stranici sam renderitsa toje naverno ptm shto ya dal emu default state, i mne ne nujen useeffect sverxu, get axios.get
-
-    useEffect(() => {
-        axios.post(`http://localhost:37234/api/assessments/sortdata`, formData)
-            .then(res => setAssessments(res.data))
-            .catch(err => setErrorObj(err?.response?.data))
-    }, [formData])
-
     //#endregion CRUD
 
     return (
@@ -84,28 +111,28 @@ export default function Assessments() {
 
                             <div className="col-lg-7 col-7 middle">
 
-                                <select value={formData.weightId} id="weightId" name="weightId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
+                                <select value={formData?.weightId} id="weightId" name="weightId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">Weights</option>
-                                    {data.weights.length && data.weights.map((entity, index) => {
+                                    {data?.weights?.length && data?.weights?.map((entity, index) => {
                                         return <option key={index} value={entity.id} >{entity.name}</option>
                                     })}
                                 </select>
 
-                                <select value={formData.distanceId} id="distanceId" name="distanceId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
+                                <select value={formData?.distanceId} id="distanceId" name="distanceId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">Distances</option>
-                                    {data.distances.length && data.distances.map((entity, index) => {
+                                    {data?.distances?.length && data?.distances?.map((entity, index) => {
                                         return <option key={index} value={entity.id} >{entity.name}</option>
                                     })}
                                 </select>
 
-                                <select value={formData.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
+                                <select value={formData?.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">Frequencies</option>
-                                    {data.frequencies.length && data.frequencies.map((entity, index) => {
+                                    {data?.frequencies?.length && data?.frequencies?.map((entity, index) => {
                                         return <option key={index} value={entity.id} >{entity.name}</option>
                                     })}
                                 </select>
 
-                                <select value={formData.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-2 col-2-2" onChange={handleSort}>
+                                <select value={formData?.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-2 col-2-2" onChange={handleSort}>
                                     <option value="0">All</option>
                                     <option value="1">Assess</option>
                                     <option value="2">No Assess</option>
@@ -127,7 +154,7 @@ export default function Assessments() {
                                 </Link>
                             </div>
 
-                            {errorObj && <p className="col-lg-12 col-12">{!errorObj.errors && errorObj}</p>}
+                            {/* {errorObj && <p className="col-lg-12 col-12">{!errorObj?.errors && errorObj}</p>} */}
 
                         </div>
 
@@ -159,19 +186,19 @@ export default function Assessments() {
                                 <tbody>
                                     {assessments && assessments.map((data, index) => {
                                         return (
-                                            <tr key={data.id}>
+                                            <tr key={data?.id}>
                                                 <th scope="row" className="text-center">{index + 1}</th>
-                                                <td className="text-center">{data.weight.name}</td>
-                                                <td className="text-center">{data.distance.name}</td>
-                                                <td className="text-center">{data.frequency.name}</td>
-                                                <td className={data.needToAssess ? "text-success text-center" : "text-danger text-center"}>
-                                                    {data.needToAssess ? "Yes" : "No"}
+                                                <td className="text-center">{data?.weight?.name}</td>
+                                                <td className="text-center">{data?.distance?.name}</td>
+                                                <td className="text-center">{data?.frequency?.name}</td>
+                                                <td className={data?.needToAssess ? "text-success text-center" : "text-danger text-center"}>
+                                                    {data?.needToAssess ? "Yes" : "No"}
                                                 </td>
                                                 <td className="text-center">
                                                     <button
                                                         type="button"
                                                         className="btn btn-warning"
-                                                        onClick={() => navigate(`/manage/assessments/update/${data.id}`)}
+                                                        onClick={() => navigate(`/manage/assessments/update/${data?.id}`)}
                                                     >
                                                         Update
                                                     </button>
@@ -180,7 +207,7 @@ export default function Assessments() {
                                                     <button
                                                         type="button"
                                                         className="btn btn-danger"
-                                                        onClick={() => handleDelete(data.id)}
+                                                        onClick={() => handleDelete(data?.id)}
                                                     >
                                                         Delete
                                                     </button>
