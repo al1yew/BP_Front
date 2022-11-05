@@ -10,16 +10,21 @@ export default function CreateAssessment() {
         frequencies: [],
         weights: []
     });
-    //osmotris eshe raz po assessment, i backend zaglani, prover vse, i razberis s responsivlik, izbavsa ot errorObj vo vsex entity
+
     const [submitValues, setSubmitValues] = useState({
-        DistanceId: 0,
-        FrequencyId: 0,
-        WeightId: 0,
-        NeedToAssess: false
+        distanceId: 0,
+        frequencyId: 0,
+        weightId: 0,
+        needToAssess: false
     });
 
+    toastr.options = {
+        hideDuration: 300,
+        timeOut: 2500,
+        positionClass: "toast-bottom-right"
+    }
+
     useEffect(() => {
-        //get all data returns frequencies distances and weights from backend in one object to set them to dropdowns
         axios.get("http://localhost:37234/api/assessments/getalldata")
             .then(res => setData(res.data))
     }, []);
@@ -29,17 +34,17 @@ export default function CreateAssessment() {
             setSubmitValues(prevValue => {
                 return {
                     ...prevValue,
-                    [entity.concat('Id')]: id
+                    [entity.toLowerCase().concat('Id')]: id
                 }
             })
     }
 
     function handleSpanClick(needToAssess) {
         let obj = {
-            DistanceId: submitValues.DistanceId,
-            FrequencyId: submitValues.FrequencyId,
-            WeightId: submitValues.WeightId,
-            NeedToAssess: needToAssess
+            distanceId: submitValues.distanceId,
+            frequencyId: submitValues.frequencyId,
+            weightId: submitValues.weightId,
+            needToAssess: needToAssess
         }
 
         toastr.clear()
@@ -49,27 +54,22 @@ export default function CreateAssessment() {
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {
-                        toastr.error(er)
+                        toastr.warning(er)
                     })
                 }
                 else {
                     toastr.error(err?.response?.data)
                 }
             })
-
-        toastr.options = {
-            hideDuration: 300,
-            timeOut: 3000,
-        }
     }
 
     return (
         <section id='dropdownkeeper'>
             <div className="container">
                 <div className="row all">
-                    <p>Select your options from the dropdowns below in order to decide whether take an assessment or not. <br />
+                    <p className="col-lg-12 col-12">Select your options from the dropdowns below in order to decide whether take an assessment or not. <br />
                         Information will be passed to database and will be used in User side.</p>
-                    <div className='row all col-lg-12 col-12'>
+                    <div className="cont col-lg-12 col-12">
                         <div className="col-lg-3-8 col-3-8 allkeeper">
                             <label>Weights</label>
                             <Dropdown query={data.weights} name={"Weight"} setValues={handleSubmitValues} />

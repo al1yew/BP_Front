@@ -9,31 +9,17 @@ export default function Table(props) {
         <div className="row all">
             <div className="top col-lg-12 col-12">
 
-                <div className="col-lg-2 col-3 left">
+                <div className="col-lg-2 col-6 left">
                     {props?.entity}
                 </div>
 
-                <div className="col-lg-1 col-1 text-end">
+                <div className="col-lg-1 col-3 text-end right">
                     <Link to={`/manage/${props?.entity}/create`} className="btn btn-primary">
                         Create
                     </Link>
                 </div>
 
-                {props.errorObject && <p className="col-lg-12 col-12">{!props?.errorObject?.errors && props?.errorObject}</p>}
-
             </div>
-
-            {!props.data.length &&
-                <h1 className="preloader">
-                    <span className="let1">l</span>
-                    <span className="let2">o</span>
-                    <span className="let3">a</span>
-                    <span className="let4">d</span>
-                    <span className="let5">i</span>
-                    <span className="let6">n</span>
-                    <span className="let7">g</span>
-                </h1>
-            }
 
             <div className="tablecontainer col-lg-12 col-12">
                 <table className="table table-striped table-bordered">
@@ -52,20 +38,12 @@ export default function Table(props) {
                                     <th scope="row" className="text-center">{index + 1}</th>
                                     <td className="text-center">{data?.name}</td>
                                     <td className="text-center">
-                                        <button
-                                            type="button"
-                                            className="btn btn-warning"
-                                            onClick={() => navigate(`/manage/${props.entity}/update/${data?.id}`)}
-                                        >
+                                        <button type="button" className="btn btn-warning" onClick={() => navigate(`/manage/${props.entity}/update/${data?.id}`)}>
                                             Update
                                         </button>
                                     </td>
                                     <td className="text-center">
-                                        <button
-                                            type="button"
-                                            className="btn btn-danger"
-                                            onClick={() => props.deleteFunc(data?.id)}
-                                        >
+                                        <button type="button" className="btn btn-danger" onClick={() => props.deleteFunc(data?.id)}>
                                             Delete
                                         </button>
                                     </td>

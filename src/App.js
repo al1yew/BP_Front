@@ -12,6 +12,7 @@ import Frequencies from "./pages/Frequency/Frequencies";
 import Weights from "./pages/Weight/Weights";
 import Distances from "./pages/Distance/Distances";
 import CreateDistance from "./pages/Distance/CreateDistance";
+import UpdateAssessment from "./pages/Assessment/UpdateAssessment";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
 
         <Route path="/manage/assessments" element={<Assessments />} />
         <Route path="/manage/assessments/create" element={<CreateAssessment />} />
-        
+        <Route path="/manage/assessments/update/:id" element={<UpdateAssessment />} />
+
         <Route path="/manage/frequencies" element={<Frequencies />} />
         <Route path="/manage/frequencies/create" element={<CreateFrequency />} />
 

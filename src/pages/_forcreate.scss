@@ -10,8 +10,6 @@
         justify-content: center;
         align-items: center;
         font-family: var(--robotomedium);
-        height: 60vh;
-        position: relative;
 
         p {
             font-family: var(--robotomedium);
@@ -20,13 +18,76 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            margin-bottom: 60px;
         }
 
         form {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
 
+            input {
+                display: block;
+                padding: 0.375rem 0.75rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #212529;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                appearance: none;
+                border-radius: 0.375rem;
+                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            }
+        }
+    }
+}
+
+@media(max-width: 576px) {
+    #createfrequencyweightdistance {
+        margin-top: 80px;
+
+        .all {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--robotomedium);
+
+            p {
+                font-family: var(--robotomedium);
+                font-size: 15px;
+                color: black;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 60px;
+                text-align: center;
+            }
+
+            form {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                input {
+                    display: block;
+                    padding: 0.375rem 0.75rem;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    color: #212529;
+                    background-color: #fff;
+                    background-clip: padding-box;
+                    border: 1px solid #ced4da;
+                    appearance: none;
+                    border-radius: 0.375rem;
+                    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                }
+
+                button{
+                    font-size: 15px;
+                }
+            }
+        }
     }
 }

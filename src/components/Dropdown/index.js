@@ -3,31 +3,15 @@ import { mdiChevronDown } from '@mdi/js';
 import React, { useEffect, useRef, useState } from "react";
 
 export default function Dropdown(props) {
-
-    //#region explanation
-
-    //1. State to control dropdown, open and close it and also set placeholder. props.name is sent byfrom parent component, Assessment.
-    //2. reference is created because of getting some knowledge from stack over flow :DDD it handles points 6 and 7, that i got from source
-    //3. open close dropdown
-    //4. handling change that also calls two functions, first is setting placeholder, second is function that i got from parent component,
-    //  i send there values that are necessary for POST. And yes, the way i made array.map() method in 8 point, the way i handled ul li, is not 
-    // appropriate, but idk how to set first li inside map function. SO i send in first li 0 and empty string. Then I send to props.setValues 
-    // id and entity name. 
-    //5. calling handle placeholder. 
-    //6 and 7 is for closing dropdown on click outside. 
-
-    //#endregion explanation
-
-    //1
     const [dropdown, setDropdown] = useState({
         isOpen: false,
-        placeholder: props.name
+        placeholder: props?.isItUpdatePage ? props?.query?.find(x => x.id == props?.selectedId)?.name : props?.name
     });
 
-    //2
+    console.log(dropdown.placeholder);
+
     const refDropdown = useRef();
 
-    //3
     function handleDropdown() {
         setDropdown(prevValue => {
             return {
@@ -37,13 +21,11 @@ export default function Dropdown(props) {
         });
     }
 
-    //4
     function handleChange(forPlaceholder, id, entity) {
         handlePlaceholder(forPlaceholder);
         props.setValues(id, entity);
     }
 
-    //5
     function handlePlaceholder(forPlaceholder) {
         setDropdown(prevValue => {
             return {
@@ -54,7 +36,6 @@ export default function Dropdown(props) {
         });
     }
 
-    //6
     useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClicks);
 
@@ -64,7 +45,6 @@ export default function Dropdown(props) {
 
     }, [refDropdown]);
 
-    //7
     const handleOutsideClicks = (e) => {
         if (!dropdown.isOpen && refDropdown.current && !refDropdown.current.contains(e.target)) {
             setDropdown(prevValue => {
@@ -76,14 +56,13 @@ export default function Dropdown(props) {
         };
     };
 
-    //8
     return (
         <div ref={refDropdown} className='dropdownkeeper col-lg-12 col-12'>
             <div className='col-lg-12 col-12 dropdown_main' onClick={handleDropdown}>
                 <span className='col-lg-10 col-10'>
                     {dropdown.placeholder}
                 </span>
-                <span className='col-lg-2 col-2'>
+                <span className={`col-lg-2 col-2 ${dropdown.isOpen ? "spanisopen" : ""}`}>
                     <Icon path={mdiChevronDown} size='20px' />
                 </span>
             </div>

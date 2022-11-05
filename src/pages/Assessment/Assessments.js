@@ -6,7 +6,6 @@ import 'toastr/build/toastr.min.css';
 
 export default function Assessments() {
 
-    //#region states and navigation
     const [assessments, setAssessments] = useState([]);
 
     const [formData, setFormData] = useState({
@@ -14,20 +13,23 @@ export default function Assessments() {
         distanceId: 0,
         frequencyId: 0,
         needToAssess: 0,
-        // showCount: 5
+        showCount: 10,
+        // page: 1
     });
-
+    //zakoncit adminku, update osobenno, sdelat maket pagination 
     const [data, setData] = useState({
         distances: [],
         frequencies: [],
         weights: []
     });
 
+    toastr.options = {
+        hideDuration: 300,
+        timeOut: 2500,
+        positionClass: "toast-bottom-right"
+    }
+
     const navigate = useNavigate();
-
-    //#endregion states and navigation
-
-    //#region effects
 
     useEffect(() => {
         axios.get("http://localhost:37234/api/assessments/")
@@ -37,12 +39,16 @@ export default function Assessments() {
             .then(res => setData(res.data))
     }, [])
 
-    //#endregion effects
-
-    //#region CRUD
-
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/assessments/${id}`)
+        axios.delete(`http://localhost:37234/api/assessments/${id}`,
+            {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                params: formData
+            })
             .then(res => setAssessments(res.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {
@@ -54,11 +60,6 @@ export default function Assessments() {
                     toastr.error(err?.response?.data)
                 }
             })
-
-        toastr.options = {
-            hideDuration: 300,
-            timeOut: 3000,
-        }
     }
 
     function handleSort(e) {
@@ -86,7 +87,7 @@ export default function Assessments() {
                 else {
                     toastr.error(err?.response?.data)
                 }
-            })
+            });
 
         setFormData(prevValue => {
             const { name, value } = e.target
@@ -96,129 +97,122 @@ export default function Assessments() {
             }
         })
     }
-    //#endregion CRUD
 
     return (
-        <div className="p-3">
+        <div className="">
             <section id="tablecontainer">
                 <div className="container">
-                    <div className="row all">
-                        <div className="top col-lg-12 col-12">
-
-                            <div className="col-lg-2 col-3 left">
-                                Assessments
-                            </div>
-
-                            <div className="col-lg-7 col-7 middle">
-
-                                <select value={formData?.weightId} id="weightId" name="weightId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
-                                    <option value="0">Weights</option>
-                                    {data?.weights?.length && data?.weights?.map((entity, index) => {
-                                        return <option key={index} value={entity.id} >{entity.name}</option>
-                                    })}
-                                </select>
-
-                                <select value={formData?.distanceId} id="distanceId" name="distanceId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
-                                    <option value="0">Distances</option>
-                                    {data?.distances?.length && data?.distances?.map((entity, index) => {
-                                        return <option key={index} value={entity.id} >{entity.name}</option>
-                                    })}
-                                </select>
-
-                                <select value={formData?.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-2 col-2-2" onChange={handleSort}>
-                                    <option value="0">Frequencies</option>
-                                    {data?.frequencies?.length && data?.frequencies?.map((entity, index) => {
-                                        return <option key={index} value={entity.id} >{entity.name}</option>
-                                    })}
-                                </select>
-
-                                <select value={formData?.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-2 col-2-2" onChange={handleSort}>
-                                    <option value="0">All</option>
-                                    <option value="1">Assess</option>
-                                    <option value="2">No Assess</option>
-                                </select>
-
-                                {/* <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-2" onChange={handleSort}>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="20">20</option>
-                                    <option value="30">30</option>
-                                    <option value="40">40</option>
-                                </select> */}
-
-                            </div>
-
-                            <div className="col-lg-1 col-1 text-end">
-                                <Link to="/manage/assessments/create" className="btn btn-primary">
-                                    Create
-                                </Link>
-                            </div>
-
-                            {/* {errorObj && <p className="col-lg-12 col-12">{!errorObj?.errors && errorObj}</p>} */}
-
+                    {
+                        !assessments.length &&
+                        <div className="preloader">
+                            LOADING...
                         </div>
+                    }
+                    {
+                        assessments.length &&
+                        <div className="row all">
+                            <div className="top col-lg-12 col-12">
 
-                        {!assessments.length &&
-                            <h1 className="preloader">
-                                <span className="let1">l</span>
-                                <span className="let2">o</span>
-                                <span className="let3">a</span>
-                                <span className="let4">d</span>
-                                <span className="let5">i</span>
-                                <span className="let6">n</span>
-                                <span className="let7">g</span>
-                            </h1>
-                        }
+                                <div className="col-lg-2 col-6 left">
+                                    Assessments
+                                </div>
 
-                        <div className="tablecontainer col-lg-12 col-12">
-                            <table className="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" className="text-center">No</th>
-                                        <th scope="col" className="text-center">Weights</th>
-                                        <th scope="col" className="text-center">Distances</th>
-                                        <th scope="col" className="text-center">Frequencies</th>
-                                        <th scope="col" className="text-center">Need to assess</th>
-                                        <th scope="col" className="text-center">Update</th>
-                                        <th scope="col" className="text-center">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {assessments && assessments.map((data, index) => {
-                                        return (
-                                            <tr key={data?.id}>
-                                                <th scope="row" className="text-center">{index + 1}</th>
-                                                <td className="text-center">{data?.weight?.name}</td>
-                                                <td className="text-center">{data?.distance?.name}</td>
-                                                <td className="text-center">{data?.frequency?.name}</td>
-                                                <td className={data?.needToAssess ? "text-success text-center" : "text-danger text-center"}>
-                                                    {data?.needToAssess ? "Yes" : "No"}
-                                                </td>
-                                                <td className="text-center">
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-warning"
-                                                        onClick={() => navigate(`/manage/assessments/update/${data?.id}`)}
-                                                    >
-                                                        Update
-                                                    </button>
-                                                </td>
-                                                <td className="text-center">
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-danger"
-                                                        onClick={() => handleDelete(data?.id)}
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })}
-                                </tbody>
-                            </table>
+                                <div className="col-lg-7 col-12 middle">
+
+                                    <select value={formData?.weightId} id="weightId" name="weightId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
+                                        <option value="0">Weights</option>
+                                        {data?.weights?.length && data?.weights?.map((entity, index) => {
+                                            return <option key={index} value={entity.id} >{entity.name}</option>
+                                        })}
+                                    </select>
+
+                                    <select value={formData?.distanceId} id="distanceId" name="distanceId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
+                                        <option value="0">Distances</option>
+                                        {data?.distances?.length && data?.distances?.map((entity, index) => {
+                                            return <option key={index} value={entity.id} >{entity.name}</option>
+                                        })}
+                                    </select>
+
+                                    <select value={formData?.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
+                                        <option value="0">Frequencies</option>
+                                        {data?.frequencies?.length && data?.frequencies?.map((entity, index) => {
+                                            return <option key={index} value={entity.id} >{entity.name}</option>
+                                        })}
+                                    </select>
+
+                                    <select value={formData?.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-2 col-3" onChange={handleSort}>
+                                        <option value="0">All</option>
+                                        <option value="1">Assess</option>
+                                        <option value="2">No Assess</option>
+                                    </select>
+
+                                    <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-5" onChange={handleSort}>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="40">40</option>
+                                        <option value="40">50</option>
+                                    </select>
+
+                                </div>
+
+                                <div className="col-lg-1 col-3 text-end right">
+                                    <Link to="/manage/assessments/create" className="btn btn-primary">
+                                        Create
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className="tablecontainer col-lg-12 col-12">
+                                <table className="table table-striped table-bordered ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" className="text-center">No</th>
+                                            <th scope="col" className="text-center">Weight kg.</th>
+                                            <th scope="col" className="text-center">Distance mt.</th>
+                                            <th scope="col" className="text-center">Frequency t/hour</th>
+                                            <th scope="col" className="text-center">Assess?</th>
+                                            <th scope="col" className="text-center">Update</th>
+                                            <th scope="col" className="text-center">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {assessments && assessments.map((data, index) => {
+                                            return (
+                                                <tr key={data?.id}>
+                                                    <th scope="row" className="text-center">{index + 1}</th>
+                                                    <td className="text-center">{data?.weight?.name}</td>
+                                                    <td className="text-center">{data?.distance?.name}</td>
+                                                    <td className="text-center">{data?.frequency?.name}</td>
+                                                    <td className={data?.needToAssess ? "text-success text-center" : "text-danger text-center"}>
+                                                        {data?.needToAssess ? "Yes" : "No"}
+                                                    </td>
+                                                    <td className="text-center">
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-warning"
+                                                            onClick={() => navigate(`/manage/assessments/update/${data?.id}`)}
+                                                        >
+                                                            Update
+                                                        </button>
+                                                    </td>
+                                                    <td className="text-center">
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-danger"
+                                                            onClick={() => handleDelete(data?.id)}
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </section>
         </div>

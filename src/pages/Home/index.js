@@ -37,11 +37,6 @@ export default function Home() {
                                     <span>Assessments of Users</span>
                                 </div>
                             </Link>
-                            <Link to="/manage/contactus">
-                                <div className="linktoassessmentorcontactpage">
-                                    <span>Contact Us</span>
-                                </div>
-                            </Link>
                         </div>
                     </div>
                 </div>
