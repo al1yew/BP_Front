@@ -8,11 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function UpdateAssessment() {
     const { id } = useParams();
 
-    const [data, setData] = useState({
-        distances: [],
-        frequencies: [],
-        weights: []
-    });
+    const [data, setData] = useState();
 
     toastr.options = {
         hideDuration: 300,
@@ -97,30 +93,28 @@ export default function UpdateAssessment() {
                     <p className="col-lg-12 col-12">Select your options from the dropdowns below in order to update selected assessment<br />
                         Information will be passed to database and will be used in User side.</p>
                     {
-                        !data.weights.length &&
-                        <div className='preloader'>
-                            LOADING...
-                        </div>
-                    }
-                    {
-                        data.weights.length &&
-                        <div className="cont col-lg-12 col-12">
-                            <div className="col-lg-3-8 col-3-8 allkeeper">
-                                <label>Weights</label>
-                                <Dropdown query={data.weights} selectedId={assessment.weightId} name={"Weight"} isItUpdatePage={true} setValues={handleSubmitValues} />
-                            </div>
-                            <div className="col-lg-3-8 col-3-8 allkeeper">
-                                <label>Distances</label>
-                                <Dropdown query={data.distances} selectedId={assessment.distanceId} name={"Distance"} isItUpdatePage={true} setValues={handleSubmitValues} />
-                            </div>
-                            <div className="col-lg-3-8 col-3-8 allkeeper">
-                                <label>Frequencies</label>
-                                <Dropdown query={data.frequencies} selectedId={assessment.frequencyId} name={"Frequency"} isItUpdatePage={true} setValues={handleSubmitValues} />
-                            </div>
+                        data ?
+                            <div className="cont col-lg-12 col-12">
+                                <div className="col-lg-3-8 col-3-8 allkeeper">
+                                    <label>Weights</label>
+                                    <Dropdown query={data?.weights} selectedId={assessment.weightId} name={"Weight"} isItUpdatePage={true} setValues={handleSubmitValues} />
+                                </div>
+                                <div className="col-lg-3-8 col-3-8 allkeeper">
+                                    <label>Distances</label>
+                                    <Dropdown query={data?.distances} selectedId={assessment.distanceId} name={"Distance"} isItUpdatePage={true} setValues={handleSubmitValues} />
+                                </div>
+                                <div className="col-lg-3-8 col-3-8 allkeeper">
+                                    <label>Frequencies</label>
+                                    <Dropdown query={data?.frequencies} selectedId={assessment.frequencyId} name={"Frequency"} isItUpdatePage={true} setValues={handleSubmitValues} />
+                                </div>
 
-                            <span className='col-lg-4 col-5-8 btn btn-primary' onClick={() => handleSpanClick(true)}>Need to Assess</span>
-                            <span className='col-lg-4 col-5-8 btn btn-danger' onClick={() => handleSpanClick(false)}>No Need to Assess</span>
-                        </div>
+                                <span className='col-lg-4 col-5-8 btn btn-primary' onClick={() => handleSpanClick(true)}>Need to Assess</span>
+                                <span className='col-lg-4 col-5-8 btn btn-danger' onClick={() => handleSpanClick(false)}>No Need to Assess</span>
+                            </div>
+                            :
+                            <div className='preloader'>
+                                LOADING...
+                            </div>
                     }
                 </div>
             </div>
