@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function UpdateAssessment() {
     const { id } = useParams();
 
-    const [data, setData] = useState();
+    const [data, setData] = useState(undefined);
 
     toastr.options = {
         hideDuration: 300,
@@ -26,11 +26,6 @@ export default function UpdateAssessment() {
     });
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/assessments/getalldata")
-            .then(res => setData(res.data))
-    }, []);
-
-    useEffect(() => {
         axios.get(`http://localhost:37234/api/assessments/${id}`)
             .then(res => setAssessment(res.data))
             .catch(err => {
@@ -44,6 +39,9 @@ export default function UpdateAssessment() {
                 }
                 navigate(-1)
             })
+
+        axios.get("http://localhost:37234/api/assessments/getalldata")
+            .then(res => setData(res.data))
     }, []);
 
     function handleSubmitValues(id, entity) {
@@ -93,8 +91,8 @@ export default function UpdateAssessment() {
                     <p className="col-lg-12 col-12">Select your options from the dropdowns below in order to update selected assessment<br />
                         Information will be passed to database and will be used in User side.</p>
                     {
-                        data ?
-                            <div className="cont col-lg-12 col-12">
+                        data != undefined ?
+                            (<div className="cont col-lg-12 col-12">
                                 <div className="col-lg-3-8 col-3-8 allkeeper">
                                     <label>Weights</label>
                                     <Dropdown query={data?.weights} selectedId={assessment.weightId} name={"Weight"} isItUpdatePage={true} setValues={handleSubmitValues} />
@@ -110,11 +108,11 @@ export default function UpdateAssessment() {
 
                                 <span className='col-lg-4 col-5-8 btn btn-primary' onClick={() => handleSpanClick(true)}>Need to Assess</span>
                                 <span className='col-lg-4 col-5-8 btn btn-danger' onClick={() => handleSpanClick(false)}>No Need to Assess</span>
-                            </div>
+                            </div>)
                             :
-                            <div className='preloader'>
+                            (<div className='preloader'>
                                 LOADING...
-                            </div>
+                            </div>)
                     }
                 </div>
             </div>
