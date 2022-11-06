@@ -14,12 +14,12 @@ export default function Weights() {
     }
 
     useEffect(() => {
-        axios.get("https://vasyaaliyev-001-site1.ftempurl.com/api/weights/")
+        axios.get("http://vasyaaliyev-001-site1.ftempurl.com/api/weights/")
             .then(res => setWeights(res.data))
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://vasyaaliyev-001-site1.ftempurl.com/api/weights/${id}`)
+        axios.delete(`http://vasyaaliyev-001-site1.ftempurl.com/api/weights/${id}`)
             .then(res => setWeights(res.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {
