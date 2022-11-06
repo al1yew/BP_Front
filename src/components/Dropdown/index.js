@@ -3,7 +3,7 @@ import { mdiChevronDown } from '@mdi/js';
 import React, { useEffect, useRef, useState } from "react";
 
 export default function Dropdown(props) {
-    
+
     const [dropdown, setDropdown] = useState({
         isOpen: false,
         placeholder: props?.isItUpdatePage ? props?.query?.find(x => x.id == props?.selectedId)?.name : props?.name
@@ -59,28 +59,33 @@ export default function Dropdown(props) {
 
     return (
         <div ref={refDropdown} className='dropdownkeeper col-lg-12 col-12'>
-            <div className='col-lg-12 col-12 dropdown_main' onClick={handleDropdown}>
-                <span className='col-lg-10 col-10'>
-                    {dropdown.placeholder}
-                </span>
-                <span className={`col-lg-2 col-2 ${dropdown.isOpen ? "spanisopen" : ""}`}>
-                    <Icon path={mdiChevronDown} size='20px' />
-                </span>
-            </div>
-            <div className={`col-lg-12 col-12 dropdown_menu ${dropdown.isOpen && "show_dropdown"}`} >
-                <ul>
-                    <li id='0' onClick={() => handleChange(props.name, 0, props.name)}>
-                        {props.name}
-                    </li>
-                    {props.query.map((element, index) => {
-                        return (
-                            <li key={index} id={element.id} onClick={() => handleChange(element.name, element.id, props.name)} >
-                                {element.name}
+            {
+                dropdown.placeholder &&
+                <>
+                    <div className='col-lg-12 col-12 dropdown_main' onClick={handleDropdown}>
+                        <span className='col-lg-10 col-10'>
+                            {dropdown.placeholder}
+                        </span>
+                        <span className={`col-lg-2 col-2 ${dropdown.isOpen ? "spanisopen" : ""}`}>
+                            <Icon path={mdiChevronDown} size='20px' />
+                        </span>
+                    </div>
+                    <div className={`col-lg-12 col-12 dropdown_menu ${dropdown.isOpen && "show_dropdown"}`} >
+                        <ul>
+                            <li id='0' onClick={() => handleChange(props.name, 0, props.name)}>
+                                {props.name}
                             </li>
-                        )
-                    })}
-                </ul>
-            </div>
+                            {props.query.map((element, index) => {
+                                return (
+                                    <li key={index} id={element.id} onClick={() => handleChange(element.name, element.id, props.name)} >
+                                        {element.name}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </>
+            }
         </div>
     );
 }
