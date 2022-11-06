@@ -14,7 +14,7 @@ export default function UpdateFrequency() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:37234/api/frequencies/${id}`)
+        axios.get(`http://vasyaaliyev-001-site1.ftempurl.com/api/frequencies/${id}`)
             .then(res => setName(res?.data?.name))
             .catch(err => {
                 navigate(-1)

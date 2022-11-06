@@ -39,7 +39,7 @@ export default function ManipulateEntity(props) {
 
         props.isUpdate
             ?
-            axios.put(`http://localhost:37234/api/${props?.route}/${props?.id}`, obj)
+            axios.put(`http://vasyaaliyev-001-site1.ftempurl.com/api/${props?.route}/${props?.id}`, obj)
                 .then(res => {
                     toastr.success("Updated!");
                     setTimeout(() => {
@@ -57,7 +57,7 @@ export default function ManipulateEntity(props) {
                     }
                 })
             :
-            axios.post(`http://localhost:37234/api/${props?.route}`, entity)
+            axios.post(`http://vasyaaliyev-001-site1.ftempurl.com/api/${props?.route}`, entity)
                 .then(res => {
                     toastr.success("Created!");
                     setTimeout(() => {

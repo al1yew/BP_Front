@@ -35,7 +35,7 @@ export default function Assessments() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/assessments/",
+        axios.get("http://vasyaaliyev-001-site1.ftempurl.com/api/assessments/",
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -46,12 +46,12 @@ export default function Assessments() {
             })
             .then(res => setAssessments(res.data))
 
-        axios.get("http://localhost:37234/api/assessments/getalldata")
+        axios.get("http://vasyaaliyev-001-site1.ftempurl.com/api/assessments/getalldata")
             .then(res => setData(res.data))
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/assessments/${id}`,
+        axios.delete(`http://vasyaaliyev-001-site1.ftempurl.com/api/assessments/${id}`,
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -74,7 +74,7 @@ export default function Assessments() {
     }
 
     function handleSort(e) {
-        axios.get(`http://localhost:37234/api/assessments/`,
+        axios.get(`http://vasyaaliyev-001-site1.ftempurl.com/api/assessments/`,
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
