@@ -14,12 +14,12 @@ export default function Distances() {
     }
 
     useEffect(() => {
-        axios.get("https://vasyaaliyev-001-site1.ftempurl.com/api/distances/")
+        axios.get("http://localhost:37234/api/distances/")
             .then(res => setDistances(res.data))
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://vasyaaliyev-001-site1.ftempurl.com/api/distances/${id}`)
+        axios.delete(`http://localhost:37234/api/distances/${id}`)
             .then(res => setDistances(res.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {

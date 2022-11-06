@@ -25,7 +25,7 @@ export default function CreateAssessment() {
     }
 
     useEffect(() => {
-        axios.get("https://vasyaaliyev-001-site1.ftempurl.com/api/assessments/getalldata")
+        axios.get("http://localhost:37234/api/assessments/getalldata")
             .then(res => setData(res.data))
     }, []);
 
@@ -49,7 +49,7 @@ export default function CreateAssessment() {
 
         toastr.clear()
 
-        axios.post('https://vasyaaliyev-001-site1.ftempurl.com/api/assessments', obj)
+        axios.post('http://localhost:37234/api/assessments', obj)
             .then(res => toastr.success("Created!"))
             .catch(err => {
                 if (err?.response?.data?.errors) {

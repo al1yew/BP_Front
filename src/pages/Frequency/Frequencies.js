@@ -14,12 +14,12 @@ export default function Frequencies() {
     }
 
     useEffect(() => {
-        axios.get("https://vasyaaliyev-001-site1.ftempurl.com/api/frequencies/")
+        axios.get("http://localhost:37234/api/frequencies/")
             .then(res => setFrequencies(res.data))
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://vasyaaliyev-001-site1.ftempurl.com/api/frequencies/${id}`)
+        axios.delete(`http://localhost:37234/api/frequencies/${id}`)
             .then(res => setFrequencies(res.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {

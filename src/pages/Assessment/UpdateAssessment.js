@@ -26,7 +26,7 @@ export default function UpdateAssessment() {
     });
 
     useEffect(() => {
-        axios.get(`https://vasyaaliyev-001-site1.ftempurl.com/api/assessments/${id}`)
+        axios.get(`http://localhost:37234/api/assessments/${id}`)
             .then(res => setAssessment(res?.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {
@@ -41,7 +41,7 @@ export default function UpdateAssessment() {
                 navigate(-1)
             })
 
-        axios.get("https://vasyaaliyev-001-site1.ftempurl.com/api/assessments/getalldata")
+        axios.get("http://localhost:37234/api/assessments/getalldata")
             .then(res => setData(res.data))
     }, []);
 
@@ -66,7 +66,7 @@ export default function UpdateAssessment() {
 
         toastr.clear()
 
-        axios.put(`https://vasyaaliyev-001-site1.ftempurl.com/api/assessments/${id}`, obj)
+        axios.put(`http://localhost:37234/api/assessments/${id}`, obj)
             .then(res => {
                 toastr.success("Updated!");
                 setTimeout(() => {
