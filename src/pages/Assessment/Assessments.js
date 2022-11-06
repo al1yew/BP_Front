@@ -115,8 +115,6 @@ export default function Assessments() {
         })
     }
 
-    console.log(assessments);
-
     return (
         <div className="">
             <section id="tablecontainer">
@@ -166,7 +164,7 @@ export default function Assessments() {
                                     </select>
 
                                     <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-5" onChange={handleSort}>
-                                        {/* <option value="5">5</option> */}
+                                        {/* <option value="5">5</option> ne zabud smenit v backende toje esli zaxocesh pokazivat po 5 */}
                                         <option value="10">10</option>
                                         <option value="20">20</option>
                                         <option value="30">30</option>
