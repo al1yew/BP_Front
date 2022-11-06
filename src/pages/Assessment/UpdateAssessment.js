@@ -27,7 +27,7 @@ export default function UpdateAssessment() {
 
     useEffect(() => {
         axios.get(`http://localhost:37234/api/assessments/${id}`)
-            .then(res => setAssessment(res.data))
+            .then(res => setAssessment(res?.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {
