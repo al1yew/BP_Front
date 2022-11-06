@@ -13,10 +13,10 @@ export default function Assessments() {
         distanceId: 0,
         frequencyId: 0,
         needToAssess: 0,
-        showCount: 10,
-        // page: 1
-    });
-    //zakoncit adminku, update osobenno, sdelat maket pagination 
+        showCount: 5,
+        page: 1
+    })
+
     const [data, setData] = useState({
         distances: [],
         frequencies: [],
@@ -32,7 +32,15 @@ export default function Assessments() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/assessments/")
+        axios.get("http://localhost:37234/api/assessments/",
+            {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                params: formData
+            })
             .then(res => setAssessments(res.data))
 
         axios.get("http://localhost:37234/api/assessments/getalldata")
@@ -75,6 +83,8 @@ export default function Assessments() {
                     "distanceId": e.target.name == "distanceId" ? e.target.value : formData.distanceId,
                     "frequencyId": e.target.name == "frequencyId" ? e.target.value : formData.frequencyId,
                     "needToAssess": e.target.name == "needToAssess" ? e.target.value : formData.needToAssess,
+                    "showCount": e.target.name == "showCount" ? e.target.value : formData.showCount,
+                    "page": e.target.name == "page" ? e.target.value : formData.page,
                 }
             })
             .then(res => setAssessments(res.data))
@@ -97,7 +107,7 @@ export default function Assessments() {
             }
         })
     }
-
+    console.log(formData)
     return (
         <div className="">
             <section id="tablecontainer">
@@ -147,6 +157,7 @@ export default function Assessments() {
                                     </select>
 
                                     <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-5" onChange={handleSort}>
+                                        <option value="5">5</option>
                                         <option value="10">10</option>
                                         <option value="20">20</option>
                                         <option value="30">30</option>
@@ -180,7 +191,7 @@ export default function Assessments() {
                                         {assessments && assessments.map((data, index) => {
                                             return (
                                                 <tr key={data?.id}>
-                                                    <th scope="row" className="text-center">{index + 1}</th>
+                                                    <th scope="row" className="text-center">{(formData.page * formData.showCount - formData.showCount) + index + 1}</th>
                                                     <td className="text-center">{data?.weight?.name}</td>
                                                     <td className="text-center">{data?.distance?.name}</td>
                                                     <td className="text-center">{data?.frequency?.name}</td>
@@ -210,6 +221,23 @@ export default function Assessments() {
                                         })}
                                     </tbody>
                                 </table>
+                            </div>
+
+                            <div className="pagination col-lg-12 col-12">
+                                <ul className="pagination pagination-md">
+                                    <li className="page-item">
+                                        <label className="page-link" htmlFor={`pagination` + 1}>1</label>
+                                        <input type="radio" id={`pagination` + 1} name="page" value="1" onChange={handleSort} checked={formData.page == "1"} />
+                                    </li>
+                                    <li className="page-item">
+                                        <label className="page-link" htmlFor={`pagination` + 2}>2</label>
+                                        <input type="radio" id={`pagination` + 2} name="page" value="2" onChange={handleSort} checked={formData.page == "2"} />
+                                    </li>
+                                    <li className="page-item">
+                                        <label className="page-link" htmlFor={`pagination` + 3}>3</label>
+                                        <input type="radio" id={`pagination` + 3} name="page" value="3" onChange={handleSort} checked={formData.page == "3"} />
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     }

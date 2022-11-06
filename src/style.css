@@ -639,7 +639,47 @@ a:hover {
 
 #tablecontainer {
   margin-top: 100px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+#tablecontainer .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#tablecontainer .pagination input {
+  display: none;
+}
+
+#tablecontainer .pagination ul {
+  margin: 0;
+  padding: 0;
+}
+
+#tablecontainer .pagination ul li {
+  cursor: pointer;
+  margin-right: 3px;
+}
+
+#tablecontainer .pagination ul li label {
+  cursor: pointer;
 }
 
 #tablecontainer .all .top {

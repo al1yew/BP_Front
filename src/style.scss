@@ -185,7 +185,39 @@ a {
 
 #tablecontainer {
     margin-top: 100px;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
+    position: relative;
+    margin-bottom: 50px;
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        input {
+            display: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                cursor: pointer;
+                margin-right: 3px;
+
+                label {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 
     .all {
         .top {
