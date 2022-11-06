@@ -14,7 +14,7 @@ export default function UpdateWeight() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:37234/api/frequencies/${id}`)
+        axios.get(`http://localhost:37234/api/weights/${id}`)
             .then(res => setName(res?.data?.name))
             .catch(err => {
                 navigate(-1)

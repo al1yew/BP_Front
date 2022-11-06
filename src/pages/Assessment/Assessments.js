@@ -6,14 +6,17 @@ import 'toastr/build/toastr.min.css';
 
 export default function Assessments() {
 
-    const [assessments, setAssessments] = useState([]);
+    const [assessments, setAssessments] = useState({
+        query: [],
+        totalCount: 0
+    });
 
     const [formData, setFormData] = useState({
         weightId: 0,
         distanceId: 0,
         frequencyId: 0,
         needToAssess: 0,
-        showCount: 5,
+        showCount: 10,
         page: 1
     })
 
@@ -84,7 +87,7 @@ export default function Assessments() {
                     "frequencyId": e.target.name == "frequencyId" ? e.target.value : formData.frequencyId,
                     "needToAssess": e.target.name == "needToAssess" ? e.target.value : formData.needToAssess,
                     "showCount": e.target.name == "showCount" ? e.target.value : formData.showCount,
-                    "page": e.target.name == "page" ? e.target.value : formData.page,
+                    "page": e.target.name == "page" ? e.target.value : 1
                 }
             })
             .then(res => setAssessments(res.data))
@@ -101,25 +104,31 @@ export default function Assessments() {
 
         setFormData(prevValue => {
             const { name, value } = e.target
+
+            console.log(name);
+
             return {
                 ...prevValue,
-                [name]: parseInt(value)
+                [name]: parseInt(value),
+                page: [name] == "page" ? e.target.value : 1
             }
         })
     }
-    console.log(formData)
+
+    console.log(assessments);
+
     return (
         <div className="">
             <section id="tablecontainer">
                 <div className="container">
                     {
-                        !assessments.length &&
+                        !assessments.query.length &&
                         <div className="preloader">
                             LOADING...
                         </div>
                     }
                     {
-                        assessments.length &&
+                        assessments.query.length &&
                         <div className="row all">
                             <div className="top col-lg-12 col-12">
 
@@ -157,12 +166,12 @@ export default function Assessments() {
                                     </select>
 
                                     <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-5" onChange={handleSort}>
-                                        <option value="5">5</option>
+                                        {/* <option value="5">5</option> */}
                                         <option value="10">10</option>
                                         <option value="20">20</option>
                                         <option value="30">30</option>
                                         <option value="40">40</option>
-                                        <option value="40">50</option>
+                                        <option value="50">50</option>
                                     </select>
 
                                 </div>
@@ -188,7 +197,7 @@ export default function Assessments() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {assessments && assessments.map((data, index) => {
+                                        {assessments && assessments.query.map((data, index) => {
                                             return (
                                                 <tr key={data?.id}>
                                                     <th scope="row" className="text-center">{(formData.page * formData.showCount - formData.showCount) + index + 1}</th>
@@ -225,18 +234,17 @@ export default function Assessments() {
 
                             <div className="pagination col-lg-12 col-12">
                                 <ul className="pagination pagination-md">
-                                    <li className="page-item">
-                                        <label className="page-link" htmlFor={`pagination` + 1}>1</label>
-                                        <input type="radio" id={`pagination` + 1} name="page" value="1" onChange={handleSort} checked={formData.page == "1"} />
-                                    </li>
-                                    <li className="page-item">
-                                        <label className="page-link" htmlFor={`pagination` + 2}>2</label>
-                                        <input type="radio" id={`pagination` + 2} name="page" value="2" onChange={handleSort} checked={formData.page == "2"} />
-                                    </li>
-                                    <li className="page-item">
-                                        <label className="page-link" htmlFor={`pagination` + 3}>3</label>
-                                        <input type="radio" id={`pagination` + 3} name="page" value="3" onChange={handleSort} checked={formData.page == "3"} />
-                                    </li>
+                                    {
+                                        assessments.query.length &&
+                                        [...Array(Math.ceil(assessments.totalCount / formData.showCount))].map((data, index) => {
+                                            return (
+                                                <li key={index} className="page-item">
+                                                    <label className="page-link" htmlFor={`pagination` + (index + 1)}>{index + 1}</label>
+                                                    <input type="radio" id={`pagination` + (index + 1)} name="page" value={index + 1} onChange={handleSort} checked={formData.page == (index + 1)} />
+                                                </li>
+                                            )
+                                        })
+                                    }
                                 </ul>
                             </div>
                         </div>
