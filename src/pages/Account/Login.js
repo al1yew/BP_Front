@@ -58,11 +58,9 @@ export default function Login() {
 
     const handleOutsideClicks = (e) => {
         if (refInput.current && !refInput.current.contains(e.target)) {
-            setIsFocused(prevValue => {
-                return {
-                    login: false,
-                    password: false
-                }
+            setIsFocused({
+                login: false,   
+                password: false
             });
         };
     };
@@ -93,7 +91,7 @@ export default function Login() {
                                 htmlFor="login"
                                 className={isFocused.login ? "moveLabelUp" : ""}
                             >
-                                {formData.login ? "" : "Your Login"}
+                                {formData.login ? "" : "Email or Username"}
                             </label>
                         </div>
 

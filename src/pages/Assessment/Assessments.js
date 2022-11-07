@@ -10,10 +10,9 @@ export default function Assessments() {
         query: [],
         totalCount: 0
     });
-    //da i voobshe vse poverit nakonecto
     //proverit eshe raz pagination, vezde sdelat krasiviy preloader, razobratsa s http i https netlify, xochet sertifikat
-    //esli ni odnogo weight assessment distance ili frequency net, toqda vsa stranica zastrevayet v loadinge, i 
-    //knopka create toje
+    //esli ni odnogo weight assessment distance ili frequency net, toqda vsa stranica zastrevayet v loadinge, i knopka create toje
+    //izuchit jwt auth and react, Claim shto takoe toje posmotret, kak eto s etim rabotayet
     const [formData, setFormData] = useState({
         weightId: 0,
         distanceId: 0,
@@ -43,7 +42,7 @@ export default function Assessments() {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json",
-                    "Accept": "application/json",
+                    "Accept": "application/json"
                 },
                 params: formData
             })
