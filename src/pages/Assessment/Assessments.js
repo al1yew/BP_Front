@@ -10,7 +10,10 @@ export default function Assessments() {
         query: [],
         totalCount: 0
     });
-
+    //da i voobshe vse poverit nakonecto
+    //proverit eshe raz pagination, vezde sdelat krasiviy preloader, razobratsa s http i https netlify, xochet sertifikat
+    //esli ni odnogo weight assessment distance ili frequency net, toqda vsa stranica zastrevayet v loadinge, i 
+    //knopka create toje
     const [formData, setFormData] = useState({
         weightId: 0,
         distanceId: 0,

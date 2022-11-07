@@ -16,12 +16,13 @@ import UpdateAssessment from "./pages/Assessment/UpdateAssessment";
 import UpdateWeight from "./pages/Weight/UpdateWeight";
 import UpdateFrequency from "./pages/Frequency/UpdateFrequency";
 import UpdateDistance from "./pages/Distance/UpdateDistance";
+import Login from "./pages/Account/Login";
 
 function App() {
   return (
     <>
       <Header />
-      
+
       <Routes>
         <Route path="/manage" element={<Home />} />
 
@@ -40,6 +41,8 @@ function App() {
         <Route path="/manage/distances" element={<Distances />} />
         <Route path="/manage/distances/create" element={<CreateDistance />} />
         <Route path="/manage/distances/update/:id" element={<UpdateDistance />} />
+
+        <Route path="/manage/account/login" element={<Login />} />
 
         <Route path="*" element={<NotFound />} />
 
