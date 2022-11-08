@@ -1,11 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Table from "../../components/Table";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
+import { UserContext } from "../../contexts/user";
 export default function Distances() {
 
     const [distances, setDistances] = useState([]);
+
+    const { user } = useContext(UserContext);
 
     toastr.options = {
         hideDuration: 300,
@@ -14,12 +17,20 @@ export default function Distances() {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/distances/")
+        axios.get("http://localhost:37234/api/distances/", {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setDistances(res.data))
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/distances/${id}`)
+        axios.delete(`http://localhost:37234/api/distances/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setDistances(res.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {

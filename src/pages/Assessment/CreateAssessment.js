@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Dropdown from "../../components/Dropdown";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
+import { UserContext } from "../../contexts/user";
 
 export default function CreateAssessment() {
     const [data, setData] = useState({
@@ -18,6 +19,8 @@ export default function CreateAssessment() {
         needToAssess: false
     });
 
+    const { user } = useContext(UserContext);
+
     toastr.options = {
         hideDuration: 300,
         timeOut: 2500,
@@ -25,7 +28,11 @@ export default function CreateAssessment() {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/assessments/getalldata")
+        axios.get("http://localhost:37234/api/assessments/getalldata", {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setData(res.data))
     }, []);
 
@@ -49,7 +56,11 @@ export default function CreateAssessment() {
 
         toastr.clear()
 
-        axios.post('http://localhost:37234/api/assessments', obj)
+        axios.post('http://localhost:37234/api/assessments', obj, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => toastr.success("Created!"))
             .catch(err => {
                 if (err?.response?.data?.errors) {

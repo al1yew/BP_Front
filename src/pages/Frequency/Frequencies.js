@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Table from "../../components/Table";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
+import { UserContext } from "../../contexts/user";
 export default function Frequencies() {
 
     const [frequencies, setFrequencies] = useState([]);
@@ -13,13 +14,23 @@ export default function Frequencies() {
         positionClass: "toast-bottom-right"
     }
 
+    const { user } = useContext(UserContext);
+
     useEffect(() => {
-        axios.get("http://localhost:37234/api/frequencies/")
+        axios.get("http://localhost:37234/api/frequencies/", {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setFrequencies(res.data))
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/frequencies/${id}`)
+        axios.delete(`http://localhost:37234/api/frequencies/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setFrequencies(res.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {

@@ -656,8 +656,81 @@ a:hover {
           align-items: center;
 }
 
-.header .all div {
+.header .all .welcome_message_header {
   font-size: 20px;
+}
+
+.header .all .papaclickmenu {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .all .papaclickmenu .clickmenu {
+  position: absolute;
+  top: 80%;
+  left: 0%;
+  padding: 15px 20px;
+  font-size: 15px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 10px 1px #009900;
+          box-shadow: 0px 0px 10px 1px #009900;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.header .all .papaclickmenu .clickmenu a {
+  margin-bottom: 8px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.header .all .papaclickmenu .clickmenu a:hover {
+  color: #009900;
+}
+
+.header .all .papaclickmenu .clickmenu a:last-child {
+  margin-bottom: 0;
+}
+
+.header .all .papaclickmenu span {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.header .all .papaclickmenu span svg {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.header .all .papaclickmenu .spanisopen svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.header .all .papaclickmenu .openclickmenu {
+  top: 110%;
+  opacity: 1;
+  visibility: visible;
 }
 
 .footer {

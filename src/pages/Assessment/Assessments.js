@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
+import { UserContext } from "../../contexts/user";
 
 export default function Assessments() {
 
@@ -10,9 +11,15 @@ export default function Assessments() {
         query: [],
         totalCount: 0
     });
-    //proverit eshe raz pagination, vezde sdelat krasiviy preloader, razobratsa s http i https netlify, xochet sertifikat
+
+    //vezde sdelat krasiviy preloader, razobratsa s http i https netlify, xochet sertifikat
     //esli ni odnogo weight assessment distance ili frequency net, toqda vsa stranica zastrevayet v loadinge, i knopka create toje
     //izuchit jwt auth and react, Claim shto takoe toje posmotret, kak eto s etim rabotayet
+    //vse ravno loading v update assessment rabotayet tak sebe, s pervogo raza vseqda ne zagrujayet vidimo perviy raz sorgu gedmir shtoli
+    // imenno koqda tolko tolko otkril proekt, nado posmotret 
+    //smeni routing ved Header imeet ssilku v adminku, a tak bit ne doljno. Posmotri esli shto vidosi narqiz
+    //vooobshe poxodu routing doljen bit ne v app, a v index.js
+    //proverit vsu programmu, vse crudi v adminke, vsu adminku
     const [formData, setFormData] = useState({
         weightId: 0,
         distanceId: 0,
@@ -28,6 +35,8 @@ export default function Assessments() {
         weights: []
     });
 
+    const { user } = useContext(UserContext);
+
     toastr.options = {
         hideDuration: 300,
         timeOut: 2500,
@@ -42,13 +51,18 @@ export default function Assessments() {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json",
-                    "Accept": "application/json"
+                    "Accept": "application/json",
+                    'Authorization': `Bearer ${user.token}`
                 },
                 params: formData
             })
             .then(res => setAssessments(res.data))
 
-        axios.get("http://localhost:37234/api/assessments/getalldata")
+        axios.get("http://localhost:37234/api/assessments/getalldata", {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setData(res.data))
     }, [])
 
@@ -59,6 +73,7 @@ export default function Assessments() {
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json",
                     "Accept": "application/json",
+                    'Authorization': `Bearer ${user.token}`
                 },
                 params: formData
             })
@@ -82,6 +97,7 @@ export default function Assessments() {
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json",
                     "Accept": "application/json",
+                    'Authorization': `Bearer ${user.token}`
                 },
                 params: {
                     "weightId": e.target.name == "weightId" ? e.target.value : formData.weightId,

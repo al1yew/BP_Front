@@ -1,14 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
+import { UserContext } from "../../contexts/user";
 
 export default function ManipulateEntity(props) {
 
     const [entity, setEntity] = useState({
         name: props?.entityName?.length ? props.entityName : ""
     });
+
+    const { user } = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -39,7 +42,11 @@ export default function ManipulateEntity(props) {
 
         props.isUpdate
             ?
-            axios.put(`http://localhost:37234/api/${props?.route}/${props?.id}`, obj)
+            axios.put(`http://localhost:37234/api/${props?.route}/${props?.id}`, obj, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
                 .then(res => {
                     toastr.success("Updated!");
                     setTimeout(() => {
@@ -57,7 +64,11 @@ export default function ManipulateEntity(props) {
                     }
                 })
             :
-            axios.post(`http://localhost:37234/api/${props?.route}`, entity)
+            axios.post(`http://localhost:37234/api/${props?.route}`, entity, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
                 .then(res => {
                     toastr.success("Created!");
                     setTimeout(() => {

@@ -1,20 +1,27 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ManipulateEntity from "../../components/Create/ManipulateEntity";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
+import { UserContext } from "../../contexts/user";
 
 export default function UpdateDistance() {
 
     const { id } = useParams();
+
+    const { user } = useContext(UserContext);
 
     const [name, setName] = useState("");
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:37234/api/distances/${id}`)
+        axios.get(`http://localhost:37234/api/distances/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setName(res?.data?.name))
             .catch(err => {
                 navigate(-1)

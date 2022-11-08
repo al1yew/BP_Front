@@ -1,6 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import photo from '../../images/bp_logo_login.png';
+import toastr from "toastr";
+import 'toastr/build/toastr.min.css';
+import { UserContext, UserContextProvider } from "../../contexts/user";
 
 export default function Login() {
 
@@ -14,9 +18,9 @@ export default function Login() {
         password: ""
     })
 
-    const navigate = useNavigate();
-
     const refInput = useRef();
+
+    const navigate = useNavigate();
 
     function handleFocus(whoIs) {
         whoIs == 1
@@ -47,6 +51,32 @@ export default function Login() {
         })
     }
 
+    const { user, setUser } = useContext(UserContext);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        axios.post("http://localhost:37234/api/accounts/login", formData)
+            .then(res => {
+                localStorage.setItem("user", JSON.stringify(res.data))
+                setUser(res.data)
+                toastr.success(`Welcome, ${res.data.name}`)
+                navigate("/manage")
+            })
+            .catch(err => {
+                if (err?.response?.data?.errors) {
+                    Object.values(err?.response?.data?.errors).forEach(er => {
+                        toastr.error(er)
+                    })
+                }
+                else {
+                    toastr.error(err?.response?.data)
+                }
+            })
+    }
+    console.log(user);
+
+    //#region outside clicks
     useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClicks);
 
@@ -59,11 +89,12 @@ export default function Login() {
     const handleOutsideClicks = (e) => {
         if (refInput.current && !refInput.current.contains(e.target)) {
             setIsFocused({
-                login: false,   
+                login: false,
                 password: false
             });
         };
     };
+    //#endregion outside clicks
 
     return (
         <section id="loginSection">
@@ -72,7 +103,7 @@ export default function Login() {
                     <div className="col-lg-2 col-4">
                         <img className="img-fluid" src={photo} alt="" />
                     </div>
-                    <form className="col-lg-4 col-12 loginDiv">
+                    <form className="col-lg-4 col-12 loginDiv" onSubmit={handleSubmit}>
                         <p className="col-lg-12 col-12">Welcome dear Admin! Sign in to continue!</p>
 
                         <div className="col-lg-12 col-12">

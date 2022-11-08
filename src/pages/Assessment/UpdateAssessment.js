@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Dropdown from "../../components/Dropdown";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
 import { useNavigate, useParams } from "react-router-dom";
+import { UserContext } from "../../contexts/user";
 
 export default function UpdateAssessment() {
     const { id } = useParams();
@@ -16,6 +17,8 @@ export default function UpdateAssessment() {
         positionClass: "toast-bottom-right"
     }
 
+    const { user } = useContext(UserContext);
+
     const navigate = useNavigate();
 
     const [assessment, setAssessment] = useState({
@@ -26,7 +29,11 @@ export default function UpdateAssessment() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:37234/api/assessments/${id}`)
+        axios.get(`http://localhost:37234/api/assessments/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setAssessment(res?.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {
@@ -41,7 +48,11 @@ export default function UpdateAssessment() {
                 navigate(-1)
             })
 
-        axios.get("http://localhost:37234/api/assessments/getalldata")
+        axios.get("http://localhost:37234/api/assessments/getalldata", {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => setData(res.data))
     }, []);
 
@@ -66,7 +77,11 @@ export default function UpdateAssessment() {
 
         toastr.clear()
 
-        axios.put(`http://localhost:37234/api/assessments/${id}`, obj)
+        axios.put(`http://localhost:37234/api/assessments/${id}`, obj, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
             .then(res => {
                 toastr.success("Updated!");
                 setTimeout(() => {
