@@ -59,7 +59,7 @@ export default function Header() {
                     <div className="welcome_message_header col-lg-4 col-8">
                         Welcome, {user.name ? user.name : "user"}!
                     </div>
-                    <div className="col-lg-1 col-2-8 papaclickmenu" ref={refDropdown}>
+                    <div className="col-lg-1 col-3 papaclickmenu" ref={refDropdown}>
                         <Link to={user.token ? "/manage" : "/"} className="col-lg-7 col-7">
                             <img className="img-fluid" src={logo} alt="" />
                         </Link>
