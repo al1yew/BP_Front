@@ -37,30 +37,30 @@ function App() {
           <>
             <Route path="/manage" element={<Home />} />
 
-            <Route path="/manage/assessments" element={<Assessments />} />
-            <Route path="/manage/assessments/create" element={<CreateAssessment />} />
-            <Route path="/manage/assessments/update/:id" element={<UpdateAssessment />} />
+            <Route path="/assessments" element={<Assessments />} />
+            <Route path="/assessments/create" element={<CreateAssessment />} />
+            <Route path="/assessments/update/:id" element={<UpdateAssessment />} />
 
-            <Route path="/manage/frequencies" element={<Frequencies />} />
-            <Route path="/manage/frequencies/create" element={<CreateFrequency />} />
-            <Route path="/manage/frequencies/update/:id" element={<UpdateFrequency />} />
+            <Route path="/frequencies" element={<Frequencies />} />
+            <Route path="/frequencies/create" element={<CreateFrequency />} />
+            <Route path="/frequencies/update/:id" element={<UpdateFrequency />} />
 
-            <Route path="/manage/weights" element={<Weights />} />
-            <Route path="/manage/weights/create" element={<CreateWeight />} />
-            <Route path="/manage/weights/update/:id" element={<UpdateWeight />} />
+            <Route path="/weights" element={<Weights />} />
+            <Route path="/weights/create" element={<CreateWeight />} />
+            <Route path="/weights/update/:id" element={<UpdateWeight />} />
 
-            <Route path="/manage/distances" element={<Distances />} />
-            <Route path="/manage/distances/create" element={<CreateDistance />} />
-            <Route path="/manage/distances/update/:id" element={<UpdateDistance />} />
+            <Route path="/distances" element={<Distances />} />
+            <Route path="/distances/create" element={<CreateDistance />} />
+            <Route path="/distances/update/:id" element={<UpdateDistance />} />
+
           </>
           :
-          <Route path="*" element={<Navigate to="/manage/account/login" replace />} />
+          <Route path="*" element={<Navigate to="/account/login" replace />} />
         }
 
-        <Route path="/manage/account/login" element={<Login />} />
+        <Route path="/account/login" element={<Login />} />
 
         {/* USER PART */}
-
 
         <Route path="/" element={<UserAssessment />} />
 

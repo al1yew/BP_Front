@@ -22,7 +22,7 @@ export default function Header() {
                     <div className="welcome_message_header col-lg-4 col-8">
                         Welcome, {user.name ? user.name : "user"}!
                     </div>
-                    <div className="col-lg-1 col-2 papaclickmenu">
+                    <div className="col-lg-1 col-2-8 papaclickmenu">
                         <Link to={user.token ? "/manage" : "/"} className="col-lg-7 col-7">
                             <img className="img-fluid" src={logo} alt="" />
                         </Link>
@@ -30,10 +30,10 @@ export default function Header() {
                             <Icon path={mdiChevronDown} size='25px' />
                         </span>
                         <div className={`clickmenu ${dropdown && "openclickmenu"}`}>
-                            <Link to="/manage/account" className="col-lg-12 col-12">
+                            <Link to="/account/login" className="col-lg-12 col-12">
                                 Account
                             </Link>
-                            <Link to="/manage/logout" className="col-lg-12 col-12">
+                            <Link to="/logout" className="col-lg-12 col-12">
                                 Logout
                             </Link>
                         </div>

@@ -20,6 +20,7 @@ export default function Assessments() {
     //smeni routing ved Header imeet ssilku v adminku, a tak bit ne doljno. Posmotri esli shto vidosi narqiz
     //vooobshe poxodu routing doljen bit ne v app, a v index.js
     //proverit vsu programmu, vse crudi v adminke, vsu adminku
+    //header na telefone ujasen ispravit nado ego sprava fotku i dropdown, mojno voobshe sment ix mestami tupo
     const [formData, setFormData] = useState({
         weightId: 0,
         distanceId: 0,
@@ -193,7 +194,7 @@ export default function Assessments() {
                                 </div>
 
                                 <div className="col-lg-1 col-3 text-end right">
-                                    <Link to="/manage/assessments/create" className="btn btn-primary">
+                                    <Link to="/assessments/create" className="btn btn-primary">
                                         Create
                                     </Link>
                                 </div>
@@ -227,7 +228,7 @@ export default function Assessments() {
                                                         <button
                                                             type="button"
                                                             className="btn btn-warning"
-                                                            onClick={() => navigate(`/manage/assessments/update/${data?.id}`)}
+                                                            onClick={() => navigate(`/assessments/update/${data?.id}`)}
                                                         >
                                                             Update
                                                         </button>

@@ -14,7 +14,7 @@ export default function Table(props) {
                 </div>
 
                 <div className="col-lg-1 col-3 text-end right">
-                    <Link to={`/manage/${props?.entity}/create`} className="btn btn-primary">
+                    <Link to={`/${props?.entity}/create`} className="btn btn-primary">
                         Create
                     </Link>
                 </div>
@@ -38,7 +38,7 @@ export default function Table(props) {
                                     <th scope="row" className="text-center">{index + 1}</th>
                                     <td className="text-center">{data?.name}</td>
                                     <td className="text-center">
-                                        <button type="button" className="btn btn-warning" onClick={() => navigate(`/manage/${props.entity}/update/${data?.id}`)}>
+                                        <button type="button" className="btn btn-warning" onClick={() => navigate(`/${props.entity}/update/${data?.id}`)}>
                                             Update
                                         </button>
                                     </td>
