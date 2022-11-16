@@ -48,20 +48,15 @@ export default function Frequencies() {
         <div id="tablecontainer">
             {
                 !frequencies.length &&
-                <div className="preloader">
-                    LOADING...
-                </div>
+                <div className="loader"></div>
             }
-            {
-                frequencies.length &&
-                <div className="container">
-                    <Table
-                        entity="Frequencies"
-                        data={frequencies}
-                        deleteFunc={handleDelete}
-                    />
-                </div>
-            }
+            <div className="container">
+                <Table
+                    entity="Frequencies"
+                    data={frequencies}
+                    deleteFunc={handleDelete}
+                />
+            </div>
         </div>
     );
 }

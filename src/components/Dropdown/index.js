@@ -9,8 +9,6 @@ export default function Dropdown(props) {
         placeholder: props?.isItUpdatePage ? props?.query?.find(x => x.id == props?.selectedId)?.name : props?.name
     });
 
-    console.log(dropdown.placeholder);
-
     const refDropdown = useRef();
 
     function handleDropdown() {

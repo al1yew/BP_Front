@@ -1,8 +1,8 @@
-@import './components/Dropdown/dropdown';
 @import './components/ErrorBoundary/errorboundary';
 @import './pages/Assessment/assessment';
 @import './pages/Account/login';
 @import './pages/forcreate';
+@import './pages/NotFound/notFound';
 
 * {
     margin: 0;
@@ -118,9 +118,12 @@ a {
                 visibility: hidden;
                 transition: 0.2s;
 
-                a {
+                a,
+                span {
                     margin-bottom: 8px;
                     transition: 0.1s;
+                    text-align: start;
+                    cursor: pointer;
 
                     &:hover {
                         color: #009900;
@@ -132,7 +135,7 @@ a {
                 }
             }
 
-            span {
+            .clickdrop {
                 cursor: pointer;
                 margin-left: 5px;
 
@@ -231,14 +234,26 @@ a {
     }
 }
 
-.preloader {
-    font-size: 40px;
-    text-align: center;
-    width: 100%;
-    padding: 200px 0;
-    font-family: var(--robotomedium);
-    background-color: white;
-    z-index: 564730;
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #009900;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: fixed;
+    left: 45%;
+    top: 45%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 //table
@@ -336,12 +351,14 @@ a {
                 visibility: hidden;
                 transition: 0.1s;
 
-                a {
+                a,
+                span {
                     margin: 0;
                     padding: 0;
                     margin-bottom: 8px;
                     transition: 0.1s;
                     font-size: 17px;
+                    text-align: start;
 
                     &:hover {
                         color: #009900;
@@ -353,7 +370,7 @@ a {
                 }
             }
 
-            span {
+            .clickdrop {
                 cursor: pointer;
                 margin-left: 5px;
 

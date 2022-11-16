@@ -51,7 +51,7 @@ export default function ManipulateEntity(props) {
                     toastr.success("Updated!");
                     setTimeout(() => {
                         navigate(-1);
-                    }, 1000);
+                    }, 200);
                 })
                 .catch(err => {
                     if (err?.response?.data?.errors) {
@@ -98,6 +98,7 @@ export default function ManipulateEntity(props) {
                     value={entity.name}
                     name="name"
                     className="col-lg-8 col-8"
+                    autoFocus
                 />
                 <button
                     type="submit"

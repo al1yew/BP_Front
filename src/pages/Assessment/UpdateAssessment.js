@@ -9,7 +9,11 @@ import { UserContext } from "../../contexts/user";
 export default function UpdateAssessment() {
     const { id } = useParams();
 
-    const [data, setData] = useState();
+    const [data, setData] = useState({
+        weights: [],
+        distances: [],
+        frequencies: []
+    });
 
     toastr.options = {
         hideDuration: 300,
@@ -86,7 +90,7 @@ export default function UpdateAssessment() {
                 toastr.success("Updated!");
                 setTimeout(() => {
                     navigate(-1)
-                }, 1500);
+                }, 200);
             })
             .catch(err => {
                 if (err?.response?.data?.errors) {
@@ -107,32 +111,30 @@ export default function UpdateAssessment() {
                     <p className="col-lg-12 col-12">Select your options from the dropdowns below in order to update selected assessment<br />
                         Information will be passed to database and will be used in User side.</p>
                     {
-                        !data &&
-                        <div className='preloader'>
-                            LOADING...
-                        </div>
+                        !data.weights.length && !data.distances.length && !data.frequencies.length && !assessment.weightId &&
+                        <div className="loader"></div>
                     }
                     {
-                        data &&
+                        data.weights.length && data.distances.length && data.frequencies.length && assessment.weightId &&
                         <div className="cont col-lg-12 col-12">
                             <div className="col-lg-3-8 col-3-8 allkeeper">
                                 <label>Weights</label>
                                 {
-                                    data.weights &&
+                                    data.weights.length &&
                                     <Dropdown query={data.weights} selectedId={assessment.weightId} name={"Weight"} isItUpdatePage={true} setValues={handleSubmitValues} />
                                 }
                             </div>
                             <div className="col-lg-3-8 col-3-8 allkeeper">
                                 <label>Distances</label>
                                 {
-                                    data.distances &&
+                                    data.distances.length &&
                                     <Dropdown query={data.distances} selectedId={assessment.distanceId} name={"Distance"} isItUpdatePage={true} setValues={handleSubmitValues} />
                                 }
                             </div>
                             <div className="col-lg-3-8 col-3-8 allkeeper">
                                 <label>Frequencies</label>
                                 {
-                                    data.frequencies &&
+                                    data.frequencies.length &&
                                     <Dropdown query={data.frequencies} selectedId={assessment.frequencyId} name={"Frequency"} isItUpdatePage={true} setValues={handleSubmitValues} />
                                 }
                             </div>

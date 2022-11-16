@@ -39,6 +39,10 @@ export default function UpdateDistance() {
     return (
         <section id='createfrequencyweightdistance'>
             {
+                !name &&
+                <div className="loader"></div>
+            }
+            {
                 name &&
                 <div className="container">
                     <ManipulateEntity

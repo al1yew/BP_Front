@@ -558,6 +558,118 @@
   }
 }
 
+:root {
+  --robotomedium: RobotoMedium;
+}
+
+#notfound {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#notfound .all {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#notfound .all p {
+  text-align: center;
+  font-family: var(--robotomedium);
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+#notfound .all a {
+  text-align: center;
+  color: #009900;
+  font-size: 20px;
+}
+
+#notfound .all span {
+  font-size: 15px;
+  text-align: center;
+  width: 100%;
+  margin: 12px 0;
+}
+
+@media (max-width: 576px) {
+  #notfound {
+    width: 100%;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #notfound .all {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #notfound .all p {
+    text-align: center;
+    font-family: var(--robotomedium);
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  #notfound .all a {
+    text-align: center;
+    color: #009900;
+    font-size: 18px;
+  }
+  #notfound .all span {
+    font-size: 13px;
+    text-align: center;
+    width: 100%;
+    margin: 8px 0;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -698,26 +810,31 @@ a:hover {
   transition: 0.2s;
 }
 
-.header .all .papaclickmenu .clickmenu a {
+.header .all .papaclickmenu .clickmenu a,
+.header .all .papaclickmenu .clickmenu span {
   margin-bottom: 8px;
   -webkit-transition: 0.1s;
   transition: 0.1s;
+  text-align: start;
+  cursor: pointer;
 }
 
-.header .all .papaclickmenu .clickmenu a:hover {
+.header .all .papaclickmenu .clickmenu a:hover,
+.header .all .papaclickmenu .clickmenu span:hover {
   color: #009900;
 }
 
-.header .all .papaclickmenu .clickmenu a:last-child {
+.header .all .papaclickmenu .clickmenu a:last-child,
+.header .all .papaclickmenu .clickmenu span:last-child {
   margin-bottom: 0;
 }
 
-.header .all .papaclickmenu span {
+.header .all .papaclickmenu .clickdrop {
   cursor: pointer;
   margin-left: 5px;
 }
 
-.header .all .papaclickmenu span svg {
+.header .all .papaclickmenu .clickdrop svg {
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
@@ -830,14 +947,39 @@ a:hover {
   }
 }
 
-.preloader {
-  font-size: 40px;
-  text-align: center;
-  width: 100%;
-  padding: 200px 0;
-  font-family: var(--robotomedium);
-  background-color: white;
-  z-index: 564730;
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #009900;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+  position: fixed;
+  left: 45%;
+  top: 45%;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 #tablecontainer {
@@ -962,25 +1104,29 @@ a:hover {
     -webkit-transition: 0.1s;
     transition: 0.1s;
   }
-  .header .papaclickmenu .clickmenu a {
+  .header .papaclickmenu .clickmenu a,
+  .header .papaclickmenu .clickmenu span {
     margin: 0;
     padding: 0;
     margin-bottom: 8px;
     -webkit-transition: 0.1s;
     transition: 0.1s;
     font-size: 17px;
+    text-align: start;
   }
-  .header .papaclickmenu .clickmenu a:hover {
+  .header .papaclickmenu .clickmenu a:hover,
+  .header .papaclickmenu .clickmenu span:hover {
     color: #009900;
   }
-  .header .papaclickmenu .clickmenu a:last-child {
+  .header .papaclickmenu .clickmenu a:last-child,
+  .header .papaclickmenu .clickmenu span:last-child {
     margin-bottom: 0;
   }
-  .header .papaclickmenu span {
+  .header .papaclickmenu .clickdrop {
     cursor: pointer;
     margin-left: 5px;
   }
-  .header .papaclickmenu span svg {
+  .header .papaclickmenu .clickdrop svg {
     -webkit-transition: 0.1s;
     transition: 0.1s;
   }

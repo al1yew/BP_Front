@@ -48,20 +48,15 @@ export default function Weights() {
         <div id="tablecontainer">
             {
                 !weights.length &&
-                <div className="preloader">
-                    LOADING...
-                </div>
+                <div className="loader"></div>
             }
-            {
-                weights.length &&
-                <div className="container">
-                    <Table
-                        entity="Weights"
-                        data={weights}
-                        deleteFunc={handleDelete}
-                    />
-                </div>
-            }
+            <div className="container">
+                <Table
+                    entity="Weights"
+                    data={weights}
+                    deleteFunc={handleDelete}
+                />
+            </div>
         </div>
     );
 }

@@ -48,20 +48,15 @@ export default function Distances() {
         <div id="tablecontainer">
             {
                 !distances.length &&
-                <div className="preloader">
-                    LOADING...
-                </div>
+                <div className="loader"></div>
             }
-            {
-                distances.length &&
-                <div className="container">
-                    <Table
-                        entity="Distances"
-                        data={distances}
-                        deleteFunc={handleDelete}
-                    />
-                </div>
-            }
+            <div className="container">
+                <Table
+                    entity="Distances"
+                    data={distances}
+                    deleteFunc={handleDelete}
+                />
+            </div>
         </div>
     );
 }

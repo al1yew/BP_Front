@@ -14,7 +14,7 @@ export default function UpdateWeight() {
 
     const navigate = useNavigate();
 
-    const {user} = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         axios.get(`http://localhost:37234/api/weights/${id}`, {
@@ -38,6 +38,10 @@ export default function UpdateWeight() {
 
     return (
         <section id='createfrequencyweightdistance'>
+            {
+                !name &&
+                <div className="loader"></div>
+            }
             {
                 name &&
                 <div className="container">

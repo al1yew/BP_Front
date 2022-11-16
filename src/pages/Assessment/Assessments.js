@@ -12,15 +12,22 @@ export default function Assessments() {
         totalCount: 0
     });
 
-    //vezde sdelat krasiviy preloader, razobratsa s http i https netlify, xochet sertifikat
-    //esli ni odnogo weight assessment distance ili frequency net, toqda vsa stranica zastrevayet v loadinge, i knopka create toje
+    //vezde sdelat krasiviy preloader, razobratsa s http i https netlify, xochet sertifikat, poiskat fake 
+
     //izuchit jwt auth and react, Claim shto takoe toje posmotret, kak eto s etim rabotayet
+
     //vse ravno loading v update assessment rabotayet tak sebe, s pervogo raza vseqda ne zagrujayet vidimo perviy raz sorgu gedmir shtoli
-    // imenno koqda tolko tolko otkril proekt, nado posmotret 
-    //smeni routing ved Header imeet ssilku v adminku, a tak bit ne doljno. Posmotri esli shto vidosi narqiz
-    //vooobshe poxodu routing doljen bit ne v app, a v index.js
+    //mojno sdelat .finally() dla axios.get kotoriy prinosit assessment i data, sozdat kakoy to state, i davat etomu state true false, i 
+    //preloader budet zaviset imenno ot etogo state, a ne ot data.nebilimne.length
+
     //proverit vsu programmu, vse crudi v adminke, vsu adminku
-    //header na telefone ujasen ispravit nado ego sprava fotku i dropdown, mojno voobshe sment ix mestami tupo
+
+    //sdelat users table v adminke
+
+    //posle togo kak zakonchu posmotret na yt full react project, pust stroyat ogromniy sayt react and api
+
+    //postaratsa sovmestit vse table kakim to obrazom, a to staticdi i user otlichayetsa ot ostalnix. Assessment ne trogat
+
     const [formData, setFormData] = useState({
         weightId: 0,
         distanceId: 0,
@@ -124,8 +131,6 @@ export default function Assessments() {
         setFormData(prevValue => {
             const { name, value } = e.target
 
-            console.log(name);
-
             return {
                 ...prevValue,
                 [name]: parseInt(value),
@@ -140,132 +145,133 @@ export default function Assessments() {
                 <div className="container">
                     {
                         !assessments.query.length &&
-                        <div className="preloader">
-                            LOADING...
-                        </div>
+                        <div className="loader"></div>
                     }
-                    {
-                        assessments.query.length &&
-                        <div className="row all">
-                            <div className="top col-lg-12 col-12">
+                    <div className="row all">
+                        <div className="top col-lg-12 col-12">
 
-                                <div className="col-lg-2 col-6 left">
-                                    Assessments
-                                </div>
-
-                                <div className="col-lg-7 col-12 middle">
-
-                                    <select value={formData?.weightId} id="weightId" name="weightId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
-                                        <option value="0">Weights</option>
-                                        {data?.weights?.length && data?.weights?.map((entity, index) => {
-                                            return <option key={index} value={entity.id} >{entity.name}</option>
-                                        })}
-                                    </select>
-
-                                    <select value={formData?.distanceId} id="distanceId" name="distanceId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
-                                        <option value="0">Distances</option>
-                                        {data?.distances?.length && data?.distances?.map((entity, index) => {
-                                            return <option key={index} value={entity.id} >{entity.name}</option>
-                                        })}
-                                    </select>
-
-                                    <select value={formData?.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
-                                        <option value="0">Frequencies</option>
-                                        {data?.frequencies?.length && data?.frequencies?.map((entity, index) => {
-                                            return <option key={index} value={entity.id} >{entity.name}</option>
-                                        })}
-                                    </select>
-
-                                    <select value={formData?.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-2 col-3" onChange={handleSort}>
-                                        <option value="0">All</option>
-                                        <option value="1">Assess</option>
-                                        <option value="2">No Assess</option>
-                                    </select>
-
-                                    <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-5" onChange={handleSort}>
-                                        {/* <option value="5">5</option> ne zabud smenit v backende toje esli zaxocesh pokazivat po 5 */}
-                                        <option value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                        <option value="50">50</option>
-                                    </select>
-
-                                </div>
-
-                                <div className="col-lg-1 col-3 text-end right">
-                                    <Link to="/assessments/create" className="btn btn-primary">
-                                        Create
-                                    </Link>
-                                </div>
+                            <div className="col-lg-2 col-6 left">
+                                Assessments
                             </div>
 
-                            <div className="tablecontainer col-lg-12 col-12">
-                                <table className="table table-striped table-bordered ">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" className="text-center">No</th>
-                                            <th scope="col" className="text-center">Weight kg.</th>
-                                            <th scope="col" className="text-center">Distance mt.</th>
-                                            <th scope="col" className="text-center">Frequency t/hour</th>
-                                            <th scope="col" className="text-center">Assess?</th>
-                                            <th scope="col" className="text-center">Update</th>
-                                            <th scope="col" className="text-center">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {assessments && assessments.query.map((data, index) => {
-                                            return (
-                                                <tr key={data?.id}>
-                                                    <th scope="row" className="text-center">{(formData.page * formData.showCount - formData.showCount) + index + 1}</th>
-                                                    <td className="text-center">{data?.weight?.name}</td>
-                                                    <td className="text-center">{data?.distance?.name}</td>
-                                                    <td className="text-center">{data?.frequency?.name}</td>
-                                                    <td className={data?.needToAssess ? "text-success text-center" : "text-danger text-center"}>
-                                                        {data?.needToAssess ? "Yes" : "No"}
-                                                    </td>
-                                                    <td className="text-center">
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-warning"
-                                                            onClick={() => navigate(`/assessments/update/${data?.id}`)}
-                                                        >
-                                                            Update
-                                                        </button>
-                                                    </td>
-                                                    <td className="text-center">
-                                                        <button
-                                                            type="button"
-                                                            className="btn btn-danger"
-                                                            onClick={() => handleDelete(data?.id)}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </table>
+                            <div className="col-lg-7 col-12 middle">
+
+                                <select value={formData?.weightId} id="weightId" name="weightId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
+                                    <option value="0">Weights</option>
+                                    {data?.weights?.length && data?.weights?.map((entity, index) => {
+                                        return <option key={index} value={entity.id} >{entity.name}</option>
+                                    })}
+                                </select>
+
+                                <select value={formData?.distanceId} id="distanceId" name="distanceId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
+                                    <option value="0">Distances</option>
+                                    {data?.distances?.length && data?.distances?.map((entity, index) => {
+                                        return <option key={index} value={entity.id} >{entity.name}</option>
+                                    })}
+                                </select>
+
+                                <select value={formData?.frequencyId} id="frequencyId" name="frequencyId" className="col-lg-2-2 col-5-8" onChange={handleSort}>
+                                    <option value="0">Frequencies</option>
+                                    {data?.frequencies?.length && data?.frequencies?.map((entity, index) => {
+                                        return <option key={index} value={entity.id} >{entity.name}</option>
+                                    })}
+                                </select>
+
+                                <select value={formData?.needToAssess} id="needToAssess" name="needToAssess" className="col-lg-2-2 col-3" onChange={handleSort}>
+                                    <option value="0">All</option>
+                                    <option value="1">Assess</option>
+                                    <option value="2">No Assess</option>
+                                </select>
+
+                                <select value={formData.showCount} id="showCount" name="showCount" className="col-lg-2-2 col-2-5" onChange={handleSort}>
+                                    {/* <option value="5">5</option> ne zabud smenit v backende toje esli zaxocesh pokazivat po 5 */}
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                </select>
+
                             </div>
 
-                            <div className="pagination col-lg-12 col-12">
-                                <ul className="pagination pagination-md">
-                                    {
-                                        assessments.query.length &&
-                                        [...Array(Math.ceil(assessments.totalCount / formData.showCount))].map((data, index) => {
-                                            return (
-                                                <li key={index} className="page-item">
-                                                    <label className="page-link" htmlFor={`pagination` + (index + 1)}>{index + 1}</label>
-                                                    <input type="radio" id={`pagination` + (index + 1)} name="page" value={index + 1} onChange={handleSort} checked={formData.page == (index + 1)} />
-                                                </li>
-                                            )
-                                        })
-                                    }
-                                </ul>
+                            <div className="col-lg-1 col-3 text-end right">
+                                <Link to="/manage/assessments/create" className="btn btn-primary">
+                                    Create
+                                </Link>
                             </div>
                         </div>
-                    }
+
+                        {
+                            assessments.query.length &&
+                            <>
+                                <div className="tablecontainer col-lg-12 col-12">
+                                    <table className="table table-striped table-bordered ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" className="text-center">No</th>
+                                                <th scope="col" className="text-center">Weight kg.</th>
+                                                <th scope="col" className="text-center">Distance mt.</th>
+                                                <th scope="col" className="text-center">Frequency t/hour</th>
+                                                <th scope="col" className="text-center">Assess?</th>
+                                                <th scope="col" className="text-center">Update</th>
+                                                <th scope="col" className="text-center">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {assessments && assessments.query.map((data, index) => {
+                                                return (
+                                                    <tr key={data?.id}>
+                                                        <th scope="row" className="text-center">{(formData.page * formData.showCount - formData.showCount) + index + 1}</th>
+                                                        <td className="text-center">{data?.weight?.name}</td>
+                                                        <td className="text-center">{data?.distance?.name}</td>
+                                                        <td className="text-center">{data?.frequency?.name}</td>
+                                                        <td className={data?.needToAssess ? "text-success text-center" : "text-danger text-center"}>
+                                                            {data?.needToAssess ? "Yes" : "No"}
+                                                        </td>
+                                                        <td className="text-center">
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-warning"
+                                                                onClick={() => navigate(`/manage/assessments/update/${data?.id}`)}
+                                                            >
+                                                                Update
+                                                            </button>
+                                                        </td>
+                                                        <td className="text-center">
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-danger"
+                                                                onClick={() => handleDelete(data?.id)}
+                                                            >
+                                                                Delete
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div className="pagination col-lg-12 col-12">
+                                    <ul className="pagination pagination-md">
+                                        {
+                                            assessments.query.length &&
+                                            [...Array(Math.ceil(assessments.totalCount / formData.showCount))].map((data, index) => {
+                                                return (
+                                                    <li key={index} className="page-item">
+                                                        <label className="page-link" htmlFor={`pagination` + (index + 1)}>{index + 1}</label>
+                                                        <input type="radio" id={`pagination` + (index + 1)} name="page" value={index + 1} onChange={handleSort} checked={formData.page == (index + 1)} />
+                                                    </li>
+                                                )
+                                            })
+                                        }
+                                    </ul>
+                                </div>
+                            </>
+                        }
+
+                    </div>
                 </div>
             </section>
         </div>

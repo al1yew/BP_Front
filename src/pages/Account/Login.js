@@ -58,10 +58,10 @@ export default function Login() {
 
         axios.post("http://localhost:37234/api/accounts/login", formData)
             .then(res => {
-                localStorage.setItem("user", JSON.stringify(res.data))
-                setUser(res.data)
-                toastr.success(`Welcome, ${res.data.name}`)
-                navigate("/manage")
+                localStorage.setItem("user", JSON.stringify(res.data));
+                setUser(res.data);
+                toastr.success(`Welcome, ${res.data.name}`);
+                navigate("/manage");
             })
             .catch(err => {
                 if (err?.response?.data?.errors) {
@@ -74,7 +74,6 @@ export default function Login() {
                 }
             })
     }
-    console.log(user);
 
     //#region outside clicks
     useEffect(() => {
@@ -104,7 +103,7 @@ export default function Login() {
                         <img className="img-fluid" src={photo} alt="" />
                     </div>
                     <form className="col-lg-4 col-12 loginDiv" onSubmit={handleSubmit}>
-                        <p className="col-lg-12 col-12">Welcome dear Admin! Sign in to continue!</p>
+                        <p className="col-lg-12 col-12">Welcome dear Admin! Sign in to continue:</p>
 
                         <div className="col-lg-12 col-12">
                             <input
@@ -117,6 +116,7 @@ export default function Login() {
                                 id="login"
                                 name="login"
                                 className="col-lg-12 col-12 "
+                                autofocus
                             />
                             <label
                                 htmlFor="login"
