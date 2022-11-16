@@ -73,7 +73,7 @@ export default function ManipulateEntity(props) {
                     toastr.success("Created!");
                     setTimeout(() => {
                         navigate(-1);
-                    }, 1000);
+                    }, 200);
                 })
                 .catch(err => {
                     if (err?.response?.data?.errors) {
