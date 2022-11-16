@@ -68,6 +68,11 @@ a {
     width: 15%;
 }
 
+.col-2-8 {
+    flex: 0 0 auto;
+    width: 23.333333%;
+}
+
 @media (min-width: 992px) {
     .col-lg-0-7 {
         flex: 0 0 auto;
