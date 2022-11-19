@@ -29,6 +29,24 @@
             font-family: var(--robotomedium);
             position: relative;
 
+            .resultkeeper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                width: 100%;
+                font-size: 15px;
+
+                .resultspanfalse {
+                    color: #009900;
+                    font-size: 20px;
+                    text-align: center;
+                    padding: 0 10px;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
             .allkeeper {
                 display: flex;
                 flex-wrap: wrap;
@@ -38,7 +56,7 @@
                 padding: 0;
                 margin: 0;
                 margin: 40px 0;
-                margin-bottom: 200px;
+                margin-bottom: 150px;
 
                 label {
                     font-size: 25px;
@@ -153,6 +171,29 @@
                 font-family: var(--robotomedium);
                 position: relative;
 
+                .resultkeeper {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    font-size: 15px;
+
+                    .resultspanfalse {
+                        color: #009900;
+                        padding: 0 10px;
+                        font-size: 18px;
+                        text-align: center;
+                        margin: 0;
+                        padding: 0;
+                        margin-top: 20px;
+                    }
+
+                    .resultspantrue {
+                        margin-top: 20px;
+                    }
+                }
+
                 .allkeeper {
                     display: flex;
                     flex-wrap: wrap;
@@ -162,7 +203,7 @@
                     padding: 0;
                     margin: 0;
                     margin: 40px 0;
-                    margin-bottom: 200px;
+                    margin-bottom: 150px;
 
                     label {
                         font-size: 14px;
@@ -249,4 +290,3 @@
         }
     }
 }
-

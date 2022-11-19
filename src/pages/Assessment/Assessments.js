@@ -12,7 +12,7 @@ export default function Assessments() {
         totalCount: 0
     });
 
-    //vezde sdelat krasiviy preloader, razobratsa s http i https netlify, xochet sertifikat, poiskat fake 
+    //razobratsa s http i https netlify, xochet sertifikat, poiskat fake 
 
     //izuchit jwt auth and react, Claim shto takoe toje posmotret, kak eto s etim rabotayet
 
@@ -27,6 +27,8 @@ export default function Assessments() {
     //posle togo kak zakonchu posmotret na yt full react project, pust stroyat ogromniy sayt react and api
 
     //postaratsa sovmestit vse table kakim to obrazom, a to staticdi i user otlichayetsa ot ostalnix. Assessment ne trogat
+
+    //prover create assessment
 
     const [formData, setFormData] = useState({
         weightId: 0,

@@ -1,3 +1,4 @@
+//#region imports 
 import React, { useContext, useEffect } from "react";
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
@@ -16,9 +17,11 @@ import UpdateAssessment from "./pages/Assessment/UpdateAssessment";
 import UpdateWeight from "./pages/Weight/UpdateWeight";
 import UpdateFrequency from "./pages/Frequency/UpdateFrequency";
 import UpdateDistance from "./pages/Distance/UpdateDistance";
-import UserAssessment from "./pages/UserAssessment/UserAssessment";
 import Login from "./pages/Account/Login";
+import Assess from "./pages/Assess/Assess";
 import { UserContext } from "./contexts/user";
+import MakeAssessment from "./pages/Assess/MakeAssessment";
+//#endregion  imports
 
 function App() {
 
@@ -59,7 +62,8 @@ function App() {
           <Route path="/manage/account/login" element={<Login />} />
         }
 
-        <Route path="/" element={<UserAssessment />} />
+        <Route path="/" element={<Assess />} />
+        <Route path="/makeassessment" element={<MakeAssessment />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

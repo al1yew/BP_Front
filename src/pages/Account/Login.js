@@ -75,7 +75,6 @@ export default function Login() {
             })
     }
 
-    //#region outside clicks
     useEffect(() => {
         document.addEventListener("mousedown", handleOutsideClicks);
 
@@ -93,7 +92,6 @@ export default function Login() {
             });
         };
     };
-    //#endregion outside clicks
 
     return (
         <section id="loginSection">
