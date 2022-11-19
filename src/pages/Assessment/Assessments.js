@@ -13,22 +13,17 @@ export default function Assessments() {
     });
 
     //razobratsa s http i https netlify, xochet sertifikat, poiskat fake 
-
+    //posle togo kak zakonchu posmotret na yt full react project, pust stroyat ogromniy sayt react and api
     //izuchit jwt auth and react, Claim shto takoe toje posmotret, kak eto s etim rabotayet
 
     //vse ravno loading v update assessment rabotayet tak sebe, s pervogo raza vseqda ne zagrujayet vidimo perviy raz sorgu gedmir shtoli
     //mojno sdelat .finally() dla axios.get kotoriy prinosit assessment i data, sozdat kakoy to state, i davat etomu state true false, i 
     //preloader budet zaviset imenno ot etogo state, a ne ot data.nebilimne.length
 
-    //proverit vsu programmu, vse crudi v adminke, vsu adminku
+    //postaratsa sovmestit vse table kakim to obrazom, a to static-di i users table otlichayetsa ot ostalnix. Assessment ne trogat
 
-    //sdelat users table v adminke
-
-    //posle togo kak zakonchu posmotret na yt full react project, pust stroyat ogromniy sayt react and api
-
-    //postaratsa sovmestit vse table kakim to obrazom, a to staticdi i user otlichayetsa ot ostalnix. Assessment ne trogat
-
-    //prover create assessment
+    //prover create assessment, pust v table ne vixodit user kotoriy seychas onlayn. ya popitalsa, params ne rabotayet.
+    //ostalos reset password, update napisat dla usera. i vse 
 
     const [formData, setFormData] = useState({
         weightId: 0,

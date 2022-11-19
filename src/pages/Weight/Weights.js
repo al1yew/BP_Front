@@ -4,6 +4,7 @@ import Table from "../../components/Table";
 import toastr from "toastr";
 import 'toastr/build/toastr.min.css';
 import { UserContext } from "../../contexts/user";
+
 export default function Weights() {
 
     const [weights, setWeights] = useState([]);

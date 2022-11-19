@@ -491,6 +491,59 @@
   --robotomedium: RobotoMedium;
 }
 
+#createuser {
+  margin-top: 100px;
+  padding-bottom: 40px;
+}
+
+#createuser .all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+#createuser .all button {
+  margin-top: 16px;
+}
+
+#createuser .all div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+#createuser .all div label {
+  font-size: 16px;
+  color: #009900;
+  margin-bottom: 8px;
+}
+
+:root {
+  --robotomedium: RobotoMedium;
+}
+
 #createfrequencyweightdistance {
   margin-top: 100px;
 }
@@ -1453,7 +1506,7 @@ a:hover {
 
 #tablecontainer .all .top .left {
   font-size: 25px;
-  color: green;
+  color: #009900;
 }
 
 #tablecontainer .all .top .middle {

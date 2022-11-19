@@ -1,6 +1,7 @@
 @import './components/ErrorBoundary/errorboundary';
 @import './pages/Assessment/assessment';
 @import './pages/Account/login';
+@import './pages/User/createuser';
 @import './pages/forcreate';
 @import './pages/NotFound/notFound';
 
@@ -582,7 +583,7 @@ a {
 
             .left {
                 font-size: 25px;
-                color: green;
+                color: #009900;
             }
 
             .middle {

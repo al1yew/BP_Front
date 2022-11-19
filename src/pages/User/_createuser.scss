@@ -1,0 +1,38 @@
+:root {
+    --robotomedium: RobotoMedium;
+}
+
+#createuser {
+    margin-top: 100px;
+    padding-bottom: 40px;
+
+    .all {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        button {
+            margin-top: 16px;
+        }
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 15px;
+
+            label {
+                font-size: 16px;
+                color: #009900;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}

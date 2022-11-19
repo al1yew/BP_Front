@@ -21,6 +21,8 @@ import Login from "./pages/Account/Login";
 import Assess from "./pages/Assess/Assess";
 import { UserContext } from "./contexts/user";
 import MakeAssessment from "./pages/Assess/MakeAssessment";
+import Users from "./pages/User/Users";
+import CreateUser from "./pages/User/CreateUser";
 //#endregion  imports
 
 function App() {
@@ -51,6 +53,9 @@ function App() {
             <Route path="/manage/distances" element={<Distances />} />
             <Route path="/manage/distances/create" element={<CreateDistance />} />
             <Route path="/manage/distances/update/:id" element={<UpdateDistance />} />
+
+            <Route path="/manage/users" element={<Users />} />
+            <Route path="/manage/users/create" element={<CreateUser />} />
           </>
           :
           // <Route path="*" element={<Navigate to="/manage/account/login" replace />} />
