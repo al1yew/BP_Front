@@ -1422,6 +1422,21 @@ a:hover {
   top: 45%;
 }
 
+@media (max-width: 576px) {
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #009900;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+    position: fixed;
+    left: 37%;
+    top: 45%;
+  }
+}
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

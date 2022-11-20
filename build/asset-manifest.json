@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.6e321a82.css",
+    "main.css": "/static/css/main.e7dc6f8d.css",
     "main.js": "/static/js/main.787603f7.js",
     "static/media/Roboto-Medium.ttf": "/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/sticker.jpg": "/static/media/sticker.e3d4ee64c2e80f21ccd6.jpg",
     "static/media/bp_logo_login.png": "/static/media/bp_logo_login.adc56da3ebbc830989e7.png",
     "index.html": "/index.html",
-    "main.6e321a82.css.map": "/static/css/main.6e321a82.css.map",
+    "main.e7dc6f8d.css.map": "/static/css/main.e7dc6f8d.css.map",
     "main.787603f7.js.map": "/static/js/main.787603f7.js.map"
   },
   "entrypoints": [
-    "static/css/main.6e321a82.css",
+    "static/css/main.e7dc6f8d.css",
     "static/js/main.787603f7.js"
   ]
 }
