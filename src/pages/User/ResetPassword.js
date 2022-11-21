@@ -50,7 +50,7 @@ export default function ResetPassword() {
             }
         })
             .then(res => {
-                toastr.success("Password id changed!");
+                toastr.success("Password is changed!");
                 setTimeout(() => {
                     navigate(-1);
                 }, 200);

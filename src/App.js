@@ -25,6 +25,7 @@ import Users from "./pages/User/Users";
 import CreateUser from "./pages/User/CreateUser";
 import UpdateUser from "./pages/User/UpdateUser";
 import ResetPassword from "./pages/User/ResetPassword";
+import UpdateLoggedUser from "./pages/User/UpdateLoggedUser";
 //#endregion  imports
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
             <Route path="/manage/users/create" element={<CreateUser />} />
             <Route path="/manage/users/update/:id" element={<UpdateUser />} />
             <Route path="/manage/users/resetpassword/:id" element={<ResetPassword />} />
+            <Route path="/manage/account/update/:username" element={<UpdateLoggedUser />} />
           </>
           :
           // <Route path="*" element={<Navigate to="/manage/account/login" replace />} />

@@ -70,14 +70,19 @@ export default function Header() {
                             {
                                 !user.token &&
                                 <Link to="/manage/account/login" className="col-lg-12 col-12" onClick={() => setDropdown(false)}>
-                                    Account
+                                    Login
                                 </Link>
                             }
                             {
                                 user.token &&
-                                <span className="col-lg-12 col-12" onClick={handleLogout}>
-                                    Logout
-                                </span>
+                                <>
+                                    <span className="col-lg-12 col-12" onClick={handleLogout}>
+                                        Logout
+                                    </span>
+                                    <Link to={`/manage/account/update/${user.userName}`} className="col-lg-12 col-12" onClick={() => setDropdown(false)}>
+                                        Account
+                                    </Link>
+                                </>
                             }
                         </div>
                     </div>

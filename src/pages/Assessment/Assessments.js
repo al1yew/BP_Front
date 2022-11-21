@@ -16,14 +16,14 @@ export default function Assessments() {
     //posle togo kak zakonchu posmotret na yt full react project, pust stroyat ogromniy sayt react and api
     //izuchit jwt auth and react, Claim shto takoe toje posmotret, kak eto s etim rabotayet
 
+    //stoit izuchit i prigotovit sebe na budusheye identity .net, gde budet svoy login, register, reset, confirm itd gotovim, budu 
+    //brat i ispolzovat svoy je kod pri rabote s druqimi proektami
+
     //vse ravno loading v update assessment rabotayet tak sebe, s pervogo raza vseqda ne zagrujayet vidimo perviy raz sorgu gedmir shtoli
     //mojno sdelat .finally() dla axios.get kotoriy prinosit assessment i data, sozdat kakoy to state, i davat etomu state true false, i 
     //preloader budet zaviset imenno ot etogo state, a ne ot data.nebilimne.length
 
     //postaratsa sovmestit vse table kakim to obrazom, a to static-di i users table otlichayetsa ot ostalnix. Assessment ne trogat
-
-    //prover create assessment, pust v table ne vixodit user kotoriy seychas onlayn. ya popitalsa, params ne rabotayet.
-    //ostalos reset password, update napisat dla usera. i vse 
 
     const [formData, setFormData] = useState({
         weightId: 0,

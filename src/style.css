@@ -492,6 +492,8 @@
 }
 
 #manipulateuser {
+  margin: 0;
+  padding: 0;
   margin-top: 100px;
   padding-bottom: 40px;
   font-family: var(--robotomedium);
@@ -512,6 +514,7 @@
           align-items: center;
   margin: 0;
   padding: 0;
+  margin-bottom: 30px;
 }
 
 #manipulateuser .all button {
@@ -536,6 +539,56 @@
 }
 
 #manipulateuser .all div label {
+  font-size: 16px;
+  color: #009900;
+  margin-bottom: 8px;
+}
+
+#manipulateuser hr {
+  color: #009900;
+}
+
+#manipulateuser .passworddropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+}
+
+#manipulateuser .passworddropdown button {
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+#manipulateuser .passworddropdown div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+#manipulateuser .passworddropdown div label {
   font-size: 16px;
   color: #009900;
   margin-bottom: 8px;

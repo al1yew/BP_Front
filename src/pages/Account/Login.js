@@ -114,7 +114,7 @@ export default function Login() {
                                 id="login"
                                 name="login"
                                 className="col-lg-12 col-12 "
-                                autofocus
+                                autoFocus
                             />
                             <label
                                 htmlFor="login"
