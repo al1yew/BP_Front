@@ -6,8 +6,9 @@ export const UserContext = createContext({
         email: "",
         name: "",
         surname: "",
-        username: "",
-        token: ""
+        userName: "",
+        token: "",
+        id: ""
     },
     setUser: null
 });
@@ -20,8 +21,9 @@ export const UserContextProvider = ({ children }) => {
                 email: "",
                 name: "",
                 surname: "",
-                username: "",
-                token: ""
+                userName: "",
+                token: "",
+                id: ""
             }
         }
         else {

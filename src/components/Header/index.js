@@ -30,7 +30,7 @@ export default function Header() {
             email: "",
             name: "",
             surname: "",
-            username: "",
+            userName: "",
             token: ""
         })
 

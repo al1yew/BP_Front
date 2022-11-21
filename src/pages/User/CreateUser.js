@@ -10,12 +10,18 @@ export default function CreateUser() {
     const [newUser, setNewUser] = useState({
         name: "",
         surname: "",
-        username: "",
+        userName: "",
         email: "",
         phoneNumber: "",
         password: "",
         confirmPassword: ""
     });
+
+    toastr.options = {
+        hideDuration: 300,
+        timeOut: 2500,
+        positionClass: "toast-bottom-right"
+    }
 
     const { user } = useContext(UserContext);
 
@@ -59,7 +65,7 @@ export default function CreateUser() {
     }
 
     return (
-        <section id="createuser">
+        <section id="manipulateuser">
             <div className="container">
                 <form className="row all" onSubmit={handleSubmit}>
                     <div className="col-lg-5-8 col-5-8">
@@ -71,8 +77,8 @@ export default function CreateUser() {
                         <input className="col-lg-12 col-12 form-control" name="surname" id="surname" type="text" required={true} onChange={handleChange} value={newUser.surname} />
                     </div>
                     <div className="col-lg-5-8 col-5-8">
-                        <label htmlFor="username" className="col-lg-12 col-12">Username</label>
-                        <input className="col-lg-12 col-12 form-control" name="username" id="username" type="text" required={true} onChange={handleChange} value={newUser.username} />
+                        <label htmlFor="userName" className="col-lg-12 col-12">Username</label>
+                        <input className="col-lg-12 col-12 form-control" name="userName" id="userName" type="text" required={true} onChange={handleChange} value={newUser.userName} />
                     </div>
                     <div className="col-lg-5-8 col-5-8">
                         <label htmlFor="email" className="col-lg-12 col-12">Email</label>

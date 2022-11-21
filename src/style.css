@@ -491,12 +491,13 @@
   --robotomedium: RobotoMedium;
 }
 
-#createuser {
+#manipulateuser {
   margin-top: 100px;
   padding-bottom: 40px;
+  font-family: var(--robotomedium);
 }
 
-#createuser .all {
+#manipulateuser .all {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -513,11 +514,11 @@
   padding: 0;
 }
 
-#createuser .all button {
+#manipulateuser .all button {
   margin-top: 16px;
 }
 
-#createuser .all div {
+#manipulateuser .all div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -534,7 +535,60 @@
   margin-bottom: 15px;
 }
 
-#createuser .all div label {
+#manipulateuser .all div label {
+  font-size: 16px;
+  color: #009900;
+  margin-bottom: 8px;
+}
+
+#resetpassword {
+  margin: 0;
+  padding: 0;
+  margin-top: 150px;
+  padding-bottom: 40px;
+  font-family: var(--robotomedium);
+}
+
+#resetpassword .all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#resetpassword .all button {
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+#resetpassword .all div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+#resetpassword .all div label {
   font-size: 16px;
   color: #009900;
   margin-bottom: 8px;
