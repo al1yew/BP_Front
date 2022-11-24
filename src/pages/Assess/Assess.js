@@ -30,7 +30,7 @@ export default function Assess() {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/assessments/getalldata")
+        axios.get("https://bpriskassessment.azurewebsites.net/api/assessments/getalldata")
             .then(res => setData(res.data))
     }, []);
 
@@ -47,7 +47,7 @@ export default function Assess() {
     function handleSpanClick() {
         toastr.clear()
 
-        axios.post('http://localhost:37234/api/assessments/makeassessment', submitValues)
+        axios.post('https://bpriskassessment.azurewebsites.net/api/assessments/makeassessment', submitValues)
             .then(res => setResult(res.data))
             .catch(err => {
                 if (err?.response?.data?.errors) {

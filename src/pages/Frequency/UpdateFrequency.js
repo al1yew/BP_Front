@@ -17,7 +17,7 @@ export default function UpdateFrequency() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:37234/api/frequencies/${id}`, {
+        axios.get(`https://bpriskassessment.azurewebsites.net/api/frequencies/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

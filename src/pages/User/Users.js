@@ -20,7 +20,7 @@ export default function Users() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/users/getall",
+        axios.get("https://bpriskassessment.azurewebsites.net/api/users/getall",
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -36,7 +36,7 @@ export default function Users() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/users/`, {
+        axios.delete(`https://bpriskassessment.azurewebsites.net/api/users/`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             },

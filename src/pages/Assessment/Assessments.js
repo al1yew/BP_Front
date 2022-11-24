@@ -24,6 +24,8 @@ export default function Assessments() {
     //preloader budet zaviset imenno ot etogo state, a ne ot data.nebilimne.length
 
     //postaratsa sovmestit vse table kakim to obrazom, a to static-di i users table otlichayetsa ot ostalnix. Assessment ne trogat
+    
+    //vse sdelal, nado prosto proverit i vse
 
     const [formData, setFormData] = useState({
         weightId: 0,
@@ -51,7 +53,7 @@ export default function Assessments() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/assessments/",
+        axios.get("https://bpriskassessment.azurewebsites.net/api/assessments/",
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -63,7 +65,7 @@ export default function Assessments() {
             })
             .then(res => setAssessments(res.data))
 
-        axios.get("http://localhost:37234/api/assessments/getalldata", {
+        axios.get("https://bpriskassessment.azurewebsites.net/api/assessments/getalldata", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -72,7 +74,7 @@ export default function Assessments() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/assessments/${id}`,
+        axios.delete(`https://bpriskassessment.azurewebsites.net/t.azurewebsites.net/api/assessments/${id}`,
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -96,7 +98,7 @@ export default function Assessments() {
     }
 
     function handleSort(e) {
-        axios.get(`http://localhost:37234/api/assessments/`,
+        axios.get(`https://bpriskassessment.azurewebsites.net/api/assessments/`,
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
