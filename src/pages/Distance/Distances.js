@@ -31,7 +31,10 @@ export default function Distances() {
                 'Authorization': `Bearer ${user.token}`
             }
         })
-            .then(res => setDistances(res.data))
+            .then(res => {
+                setDistances(res.data);
+                toastr.success("Deleted!");
+            })
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {

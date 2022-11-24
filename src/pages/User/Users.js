@@ -45,7 +45,10 @@ export default function Users() {
                 "username": user.userName
             }
         })
-            .then(res => setUsers(res.data))
+            .then(res => {
+                setUsers(res.data);
+                toastr.success("Deleted!");
+            })
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {

@@ -24,7 +24,7 @@ export default function Assessments() {
     //preloader budet zaviset imenno ot etogo state, a ne ot data.nebilimne.length
 
     //postaratsa sovmestit vse table kakim to obrazom, a to static-di i users table otlichayetsa ot ostalnix. Assessment ne trogat
-    
+
     //vse sdelal, nado prosto proverit i vse
 
     const [formData, setFormData] = useState({
@@ -74,7 +74,7 @@ export default function Assessments() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://bpriskassessment.azurewebsites.net/t.azurewebsites.net/api/assessments/${id}`,
+        axios.delete(`https://bpriskassessment.azurewebsites.net/api/assessments/${id}`,
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -84,7 +84,10 @@ export default function Assessments() {
                 },
                 params: formData
             })
-            .then(res => setAssessments(res.data))
+            .then(res => {
+                setAssessments(res.data);
+                toastr.success("Deleted!");
+            })
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {

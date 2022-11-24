@@ -31,7 +31,10 @@ export default function Frequencies() {
                 'Authorization': `Bearer ${user.token}`
             }
         })
-            .then(res => setFrequencies(res.data))
+            .then(res => {
+                setFrequencies(res.data);
+                toastr.success("Deleted!")
+            })
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {

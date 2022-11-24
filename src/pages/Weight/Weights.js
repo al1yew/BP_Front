@@ -32,7 +32,10 @@ export default function Weights() {
                 'Authorization': `Bearer ${user.token}`
             }
         })
-            .then(res => setWeights(res.data))
+            .then(res => {
+                setWeights(res.data);
+                toastr.success("Deleted!")
+            })
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {
