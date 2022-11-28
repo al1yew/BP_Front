@@ -21,11 +21,12 @@ export default function Assessments() {
 
     //vse ravno loading v update assessment rabotayet tak sebe, s pervogo raza vseqda ne zagrujayet vidimo perviy raz sorgu gedmir shtoli
     //mojno sdelat .finally() dla axios.get kotoriy prinosit assessment i data, sozdat kakoy to state, i davat etomu state true false, i 
-    //preloader budet zaviset imenno ot etogo state, a ne ot data.nebilimne.length
+    //preloader budet zaviset imenno ot etogo state, a ne ot data.nebilimne.length -- amma ishledi budto i vse ok
 
-    //postaratsa sovmestit vse table kakim to obrazom, a to static-di i users table otlichayetsa ot ostalnix. Assessment ne trogat
+    //user update pcm to stranica zagrujayetsa bez loadera, snachala idut inputi i tolko potom pcm to ima familie email zad vpisivayetsa
 
-    //vse sdelal, nado prosto proverit i vse
+    // voobshe loader bolnaya tema, ego nujno vezde dobavit s setTimeout budto, shto bi posle odnogo najatiya srazu aktivirovalsa loader,
+    // a potom axios zad paralelno shli poka loader krutitsa naprimer na 1 sekundu, ili je vkluchat loader poka response ne pridet naprimer
 
     const [formData, setFormData] = useState({
         weightId: 0,

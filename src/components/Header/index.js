@@ -79,9 +79,12 @@ export default function Header() {
                                     <span className="col-lg-12 col-12" onClick={handleLogout}>
                                         Logout
                                     </span>
-                                    <Link to={`/manage/account/update/${user.userName}`} className="col-lg-12 col-12" onClick={() => setDropdown(false)}>
-                                        Account
-                                    </Link>
+                                    {
+                                        user.userName != "SuperAdmin" &&
+                                        <Link to={`/manage/account/update/${user.userName}`} className="col-lg-12 col-12" onClick={() => setDropdown(false)}>
+                                            Account
+                                        </Link>
+                                    }
                                 </>
                             }
                         </div>
