@@ -28,6 +28,8 @@ export default function Assessments() {
     // voobshe loader bolnaya tema, ego nujno vezde dobavit s setTimeout budto, shto bi posle odnogo najatiya srazu aktivirovalsa loader,
     // a potom axios zad paralelno shli poka loader krutitsa naprimer na 1 sekundu, ili je vkluchat loader poka response ne pridet naprimer
 
+    //pagination ubrat iz obshego sort methoda, on perekluchayet stranicu s 20 rows, i potom posle response ubirayet 5 shtuk
+
     const [formData, setFormData] = useState({
         weightId: 0,
         distanceId: 0,
@@ -146,10 +148,6 @@ export default function Assessments() {
         <div className="">
             <section id="tablecontainer">
                 <div className="container">
-                    {
-                        !assessments.query.length &&
-                        <div className="loader"></div>
-                    }
                     <div className="row all">
                         <div className="top col-lg-12 col-12">
 
@@ -205,73 +203,75 @@ export default function Assessments() {
                         </div>
 
                         {
-                            assessments.query.length &&
-                            <>
-                                <div className="tablecontainer col-lg-12 col-12">
-                                    <table className="table table-striped table-bordered ">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" className="text-center">No</th>
-                                                <th scope="col" className="text-center">Weight kg.</th>
-                                                <th scope="col" className="text-center">Distance mt.</th>
-                                                <th scope="col" className="text-center">Frequency t/hour</th>
-                                                <th scope="col" className="text-center">Assess?</th>
-                                                <th scope="col" className="text-center">Update</th>
-                                                <th scope="col" className="text-center">Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {assessments && assessments.query.map((data, index) => {
-                                                return (
-                                                    <tr key={data?.id}>
-                                                        <th scope="row" className="text-center">{(formData.page * formData.showCount - formData.showCount) + index + 1}</th>
-                                                        <td className="text-center">{data?.weight?.name}</td>
-                                                        <td className="text-center">{data?.distance?.name}</td>
-                                                        <td className="text-center">{data?.frequency?.name}</td>
-                                                        <td className={data?.needToAssess ? "text-success text-center" : "text-danger text-center"}>
-                                                            {data?.needToAssess ? "Yes" : "No"}
-                                                        </td>
-                                                        <td className="text-center">
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-warning"
-                                                                onClick={() => navigate(`/manage/assessments/update/${data?.id}`)}
-                                                            >
-                                                                Update
-                                                            </button>
-                                                        </td>
-                                                        <td className="text-center">
-                                                            <button
-                                                                type="button"
-                                                                className="btn btn-danger"
-                                                                onClick={() => handleDelete(data?.id)}
-                                                            >
-                                                                Delete
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })}
-                                        </tbody>
-                                    </table>
-                                </div>
+                            assessments.query.length ?
+                                <>
+                                    <div className="tablecontainer col-lg-12 col-12">
+                                        <table className="table table-striped table-bordered ">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" className="text-center">No</th>
+                                                    <th scope="col" className="text-center">Weight kg.</th>
+                                                    <th scope="col" className="text-center">Distance mt.</th>
+                                                    <th scope="col" className="text-center">Frequency t/hour</th>
+                                                    <th scope="col" className="text-center">Assess?</th>
+                                                    <th scope="col" className="text-center">Update</th>
+                                                    <th scope="col" className="text-center">Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {assessments && assessments.query.map((data, index) => {
+                                                    return (
+                                                        <tr key={data?.id}>
+                                                            <th scope="row" className="text-center">{(formData.page * formData.showCount - formData.showCount) + index + 1}</th>
+                                                            <td className="text-center">{data?.weight?.name}</td>
+                                                            <td className="text-center">{data?.distance?.name}</td>
+                                                            <td className="text-center">{data?.frequency?.name}</td>
+                                                            <td className={data?.needToAssess ? "text-success text-center" : "text-danger text-center"}>
+                                                                {data?.needToAssess ? "Yes" : "No"}
+                                                            </td>
+                                                            <td className="text-center">
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-warning"
+                                                                    onClick={() => navigate(`/manage/assessments/update/${data?.id}`)}
+                                                                >
+                                                                    Update
+                                                                </button>
+                                                            </td>
+                                                            <td className="text-center">
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-danger"
+                                                                    onClick={() => handleDelete(data?.id)}
+                                                                >
+                                                                    Delete
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                                <div className="pagination col-lg-12 col-12">
-                                    <ul className="pagination pagination-md">
-                                        {
-                                            assessments.query.length &&
-                                            [...Array(Math.ceil(assessments.totalCount / formData.showCount))].map((data, index) => {
-                                                return (
-                                                    <li key={index} className="page-item">
-                                                        <label className="page-link" htmlFor={`pagination` + (index + 1)}>{index + 1}</label>
-                                                        <input type="radio" id={`pagination` + (index + 1)} name="page" value={index + 1} onChange={handleSort} checked={formData.page == (index + 1)} />
-                                                    </li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
-                                </div>
-                            </>
+                                    <div className="pagination col-lg-12 col-12">
+                                        <ul className="pagination pagination-md">
+                                            {
+                                                assessments.query.length &&
+                                                [...Array(Math.ceil(assessments.totalCount / formData.showCount))].map((data, index) => {
+                                                    return (
+                                                        <li key={index} className="page-item">
+                                                            <label className="page-link" htmlFor={`pagination` + (index + 1)}>{index + 1}</label>
+                                                            <input type="radio" id={`pagination` + (index + 1)} name="page" value={index + 1} onChange={handleSort} checked={formData.page == (index + 1)} />
+                                                        </li>
+                                                    )
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
+                                </>
+                                :
+                                <div className="loader"></div>
                         }
 
                     </div>

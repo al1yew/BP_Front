@@ -49,10 +49,6 @@ export default function Distances() {
 
     return (
         <div id="tablecontainer">
-            {
-                !distances.length &&
-                <div className="loader"></div>
-            }
             <div className="container">
                 <Table
                     entity="Distances"

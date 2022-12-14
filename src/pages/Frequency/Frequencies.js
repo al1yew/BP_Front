@@ -49,10 +49,6 @@ export default function Frequencies() {
 
     return (
         <div id="tablecontainer">
-            {
-                !frequencies.length &&
-                <div className="loader"></div>
-            }
             <div className="container">
                 <Table
                     entity="Frequencies"

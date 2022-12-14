@@ -39,20 +39,18 @@ export default function UpdateWeight() {
     return (
         <section id='createfrequencyweightdistance'>
             {
-                !name &&
-                <div className="loader"></div>
-            }
-            {
-                name &&
-                <div className="container">
-                    <ManipulateEntity
-                        entity="Weight"
-                        route="weights"
-                        isUpdate={true}
-                        id={id}
-                        entityName={name}
-                    />
-                </div>
+                !name ?
+                    <div className="loader"></div>
+                    :
+                    <div className="container">
+                        <ManipulateEntity
+                            entity="Weight"
+                            route="weights"
+                            isUpdate={true}
+                            id={id}
+                            entityName={name}
+                        />
+                    </div>
             }
         </section >
     );

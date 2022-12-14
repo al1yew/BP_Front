@@ -71,38 +71,36 @@ export default function Assess() {
                 <div className="row all">
                     <p className="col-lg-12 col-12">Select your options from the dropdowns below in order to decide whether take an assessment or not.</p>
                     {
-                        !data.weights.length &&
-                        <div className="loader"></div>
-                    }
-                    {
-                        data.weights.length &&
-                        <div className="cont col-lg-12 col-12">
+                        !data.weights.length ?
+                            <div className="loader"></div>
+                            :
+                            <div className="cont col-lg-12 col-12">
 
-                            <div className="col-lg-3-8 col-3-8 allkeeper">
-                                <label>Weights</label>
-                                <Dropdown query={data.weights} name={"Weight"} setValues={handleSubmitValues} />
-                            </div>
-                            <div className="col-lg-3-8 col-3-8 allkeeper">
-                                <label>Distances</label>
-                                <Dropdown query={data.distances} name={"Distance"} setValues={handleSubmitValues} />
-                            </div>
-                            <div className="col-lg-3-8 col-3-8 allkeeper">
-                                <label>Frequencies</label>
-                                <Dropdown query={data.frequencies} name={"Frequency"} setValues={handleSubmitValues} />
-                            </div>
+                                <div className="col-lg-3-8 col-3-8 allkeeper">
+                                    <label>Weights</label>
+                                    <Dropdown query={data.weights} name={"Weight"} setValues={handleSubmitValues} />
+                                </div>
+                                <div className="col-lg-3-8 col-3-8 allkeeper">
+                                    <label>Distances</label>
+                                    <Dropdown query={data.distances} name={"Distance"} setValues={handleSubmitValues} />
+                                </div>
+                                <div className="col-lg-3-8 col-3-8 allkeeper">
+                                    <label>Frequencies</label>
+                                    <Dropdown query={data.frequencies} name={"Frequency"} setValues={handleSubmitValues} />
+                                </div>
 
-                            <div className="col-lg-12 col-12 resultkeeper">
-                                <span className='col-lg-4 col-12 btn btn-success' onClick={handleSpanClick}>Find out!</span>
-                                {
-                                    result == 1 &&
-                                    <span className='col-lg-6 col-12 resultspantrue btn btn-danger' onClick={handleNavigate}>You need to take an assessment. Click here.</span>
-                                }
-                                {
-                                    result == 0 &&
-                                    <span className='col-lg-6 col-12 resultspanfalse'>You DO NOT need to take an assessment.</span>
-                                }
+                                <div className="col-lg-12 col-12 resultkeeper">
+                                    <span className='col-lg-4 col-12 btn btn-success' onClick={handleSpanClick}>Find out!</span>
+                                    {
+                                        result == 1 &&
+                                        <span className='col-lg-6 col-12 resultspantrue btn btn-danger' onClick={handleNavigate}>You need to take an assessment. Click here.</span>
+                                    }
+                                    {
+                                        result == 0 &&
+                                        <span className='col-lg-6 col-12 resultspanfalse'>You DO NOT need to take an assessment.</span>
+                                    }
+                                </div>
                             </div>
-                        </div>
                     }
                 </div>
             </div>

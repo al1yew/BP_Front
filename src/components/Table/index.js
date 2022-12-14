@@ -22,39 +22,41 @@ export default function Table(props) {
             </div>
 
             {
-                props?.data?.length &&
-                <div className="tablecontainer col-lg-12 col-12">
-                    <table className="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col" className="text-center">No</th>
-                                <th scope="col" className="text-center">Name</th>
-                                <th scope="col" className="text-center">Update</th>
-                                <th scope="col" className="text-center">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {props?.data && props?.data?.map((data, index) => {
-                                return (
-                                    <tr key={data?.id}>
-                                        <th scope="row" className="text-center">{index + 1}</th>
-                                        <td className="text-center">{data?.name}</td>
-                                        <td className="text-center">
-                                            <button type="button" className="btn btn-warning" onClick={() => navigate(`/manage/${props.entity}/update/${data?.id}`)}>
-                                                Update
-                                            </button>
-                                        </td>
-                                        <td className="text-center">
-                                            <button type="button" className="btn btn-danger" onClick={() => props.deleteFunc(data?.id)}>
-                                                Delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+                props?.data?.length ?
+                    <div className="tablecontainer col-lg-12 col-12">
+                        <table className="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" className="text-center">No</th>
+                                    <th scope="col" className="text-center">Name</th>
+                                    <th scope="col" className="text-center">Update</th>
+                                    <th scope="col" className="text-center">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {props?.data && props?.data?.map((data, index) => {
+                                    return (
+                                        <tr key={data?.id}>
+                                            <th scope="row" className="text-center">{index + 1}</th>
+                                            <td className="text-center">{data?.name}</td>
+                                            <td className="text-center">
+                                                <button type="button" className="btn btn-warning" onClick={() => navigate(`/manage/${props.entity}/update/${data?.id}`)}>
+                                                    Update
+                                                </button>
+                                            </td>
+                                            <td className="text-center">
+                                                <button type="button" className="btn btn-danger" onClick={() => props.deleteFunc(data?.id)}>
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+                    :
+                    <div className="loader"></div>
             }
         </div>
     );

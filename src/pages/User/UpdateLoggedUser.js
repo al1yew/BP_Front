@@ -174,48 +174,46 @@ export default function UpdateLoggedUser() {
         <section id="manipulateuser">
             <div className="container">
                 {
-                    !loggedUser.id.length &&
-                    <div className="loader"></div>
-                }
-                {
-                    loggedUser.id.length &&
-                    <>
-                        <form className="row all" onSubmit={handleSubmit}>
-                            <div className="col-lg-5-8 col-5-8">
-                                <label htmlFor="name" className="col-lg-12 col-12">Name</label>
-                                <input className="col-lg-12 col-12 form-control" name="name" id="name" type="text" required={true} onChange={handleChange} value={loggedUser.name} autoFocus />
-                            </div>
-                            <div className="col-lg-5-8 col-5-8">
-                                <label htmlFor="surname" className="col-lg-12 col-12">Surname</label>
-                                <input className="col-lg-12 col-12 form-control" name="surname" id="surname" type="text" required={true} onChange={handleChange} value={loggedUser.surname} />
-                            </div>
-                            <div className="col-lg-5-8 col-5-8">
-                                <label htmlFor="userName" className="col-lg-12 col-12">Username</label>
-                                <input className="col-lg-12 col-12 form-control" name="userName" id="userName" type="text" required={true} onChange={handleChange} value={loggedUser.userName} />
-                            </div>
-                            <div className="col-lg-5-8 col-5-8">
-                                <label htmlFor="email" className="col-lg-12 col-12">Email</label>
-                                <input className="col-lg-12 col-12 form-control" name="email" id="email" type="email" required={true} onChange={handleChange} value={loggedUser.email} />
-                            </div>
-                            <div className="col-lg-5-8 col-5-8">
-                                <label htmlFor="phoneNumber" className="col-lg-12 col-12">Phone Number</label>
-                                <input className="col-lg-12 col-12 form-control" name="phoneNumber" id="phoneNumber" type="text" onChange={handleChange} value={loggedUser.phoneNumber} />
-                            </div>
-                            <button className="col-lg-5-8 col-5-8 btn btn-success" type="submit">Change Info</button>
-                        </form>
-                        <hr />
-                        <form className="row passworddropdown col-lg-12 col-12" onSubmit={handlePasswordForm}>
-                            <div className="col-lg-5-8 col-5-8">
-                                <label htmlFor="password" className="col-lg-12 col-12">Password</label>
-                                <input className="col-lg-12 col-12 form-control" name="password" id="password" type="password" required={true} onChange={handlePasswordChange} value={password.password} />
-                            </div>
-                            <div className="col-lg-5-8 col-5-8">
-                                <label htmlFor="confirmPassword" className="col-lg-12 col-12">Confirm Password</label>
-                                <input className="col-lg-12 col-12 form-control" name="confirmPassword" id="confirmPassword" type="password" required={true} onChange={handlePasswordChange} value={password.confirmPassword} />
-                            </div>
-                            <button className="col-lg-5-8 col-5-8 btn btn-success" type="submit">Change Password</button>
-                        </form>
-                    </>
+                    !loggedUser.id.length ?
+                        <div className="loader"></div>
+                        :
+                        <>
+                            <form className="row all" onSubmit={handleSubmit}>
+                                <div className="col-lg-5-8 col-5-8">
+                                    <label htmlFor="name" className="col-lg-12 col-12">Name</label>
+                                    <input className="col-lg-12 col-12 form-control" name="name" id="name" type="text" required={true} onChange={handleChange} value={loggedUser.name} autoFocus />
+                                </div>
+                                <div className="col-lg-5-8 col-5-8">
+                                    <label htmlFor="surname" className="col-lg-12 col-12">Surname</label>
+                                    <input className="col-lg-12 col-12 form-control" name="surname" id="surname" type="text" required={true} onChange={handleChange} value={loggedUser.surname} />
+                                </div>
+                                <div className="col-lg-5-8 col-5-8">
+                                    <label htmlFor="userName" className="col-lg-12 col-12">Username</label>
+                                    <input className="col-lg-12 col-12 form-control" name="userName" id="userName" type="text" required={true} onChange={handleChange} value={loggedUser.userName} />
+                                </div>
+                                <div className="col-lg-5-8 col-5-8">
+                                    <label htmlFor="email" className="col-lg-12 col-12">Email</label>
+                                    <input className="col-lg-12 col-12 form-control" name="email" id="email" type="email" required={true} onChange={handleChange} value={loggedUser.email} />
+                                </div>
+                                <div className="col-lg-5-8 col-5-8">
+                                    <label htmlFor="phoneNumber" className="col-lg-12 col-12">Phone Number</label>
+                                    <input className="col-lg-12 col-12 form-control" name="phoneNumber" id="phoneNumber" type="text" onChange={handleChange} value={loggedUser.phoneNumber} />
+                                </div>
+                                <button className="col-lg-5-8 col-5-8 btn btn-success" type="submit">Change Info</button>
+                            </form>
+                            <hr />
+                            <form className="row passworddropdown col-lg-12 col-12" onSubmit={handlePasswordForm}>
+                                <div className="col-lg-5-8 col-5-8">
+                                    <label htmlFor="password" className="col-lg-12 col-12">Password</label>
+                                    <input className="col-lg-12 col-12 form-control" name="password" id="password" type="password" required={true} onChange={handlePasswordChange} value={password.password} />
+                                </div>
+                                <div className="col-lg-5-8 col-5-8">
+                                    <label htmlFor="confirmPassword" className="col-lg-12 col-12">Confirm Password</label>
+                                    <input className="col-lg-12 col-12 form-control" name="confirmPassword" id="confirmPassword" type="password" required={true} onChange={handlePasswordChange} value={password.confirmPassword} />
+                                </div>
+                                <button className="col-lg-5-8 col-5-8 btn btn-success" type="submit">Change Password</button>
+                            </form>
+                        </>
                 }
             </div>
         </section>

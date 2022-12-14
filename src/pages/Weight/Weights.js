@@ -50,10 +50,6 @@ export default function Weights() {
 
     return (
         <div id="tablecontainer">
-            {
-                !weights.length &&
-                <div className="loader"></div>
-            }
             <div className="container">
                 <Table
                     entity="Weights"

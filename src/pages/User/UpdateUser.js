@@ -97,34 +97,33 @@ export default function UpdateUser() {
         <section id="manipulateuser">
             <div className="container">
                 {
-                    !updateUser &&
-                    <div className="loader"></div>
-                }
-                {
-                    updateUser &&
-                    <form className="row all" onSubmit={handleSubmit}>
-                        <div className="col-lg-5-8 col-5-8">
-                            <label htmlFor="name" className="col-lg-12 col-12">Name</label>
-                            <input className="col-lg-12 col-12 form-control" name="name" id="name" type="text" required={true} onChange={handleChange} value={updateUser.name} autoFocus />
-                        </div>
-                        <div className="col-lg-5-8 col-5-8">
-                            <label htmlFor="surname" className="col-lg-12 col-12">Surname</label>
-                            <input className="col-lg-12 col-12 form-control" name="surname" id="surname" type="text" required={true} onChange={handleChange} value={updateUser.surname} />
-                        </div>
-                        <div className="col-lg-5-8 col-5-8">
-                            <label htmlFor="userName" className="col-lg-12 col-12">Username</label>
-                            <input className="col-lg-12 col-12 form-control" name="userName" id="userName" type="text" required={true} onChange={handleChange} value={updateUser.userName} />
-                        </div>
-                        <div className="col-lg-5-8 col-5-8">
-                            <label htmlFor="email" className="col-lg-12 col-12">Email</label>
-                            <input className="col-lg-12 col-12 form-control" name="email" id="email" type="email" required={true} onChange={handleChange} value={updateUser.email} />
-                        </div>
-                        <div className="col-lg-5-8 col-5-8">
-                            <label htmlFor="phoneNumber" className="col-lg-12 col-12">Phone Number</label>
-                            <input className="col-lg-12 col-12 form-control" name="phoneNumber" id="phoneNumber" type="text" onChange={handleChange} value={updateUser.phoneNumber} />
-                        </div>
-                        <button className="col-lg-5-8 col-5-8 btn btn-success" type="submit">Update</button>
-                    </form>
+                    !updateUser.name.length && !updateUser.surname.length && !updateUser.userName.length ?
+                        <div className="loader"></div>
+                        :
+                        updateUser &&
+                        <form className="row all" onSubmit={handleSubmit}>
+                            <div className="col-lg-5-8 col-5-8">
+                                <label htmlFor="name" className="col-lg-12 col-12">Name</label>
+                                <input className="col-lg-12 col-12 form-control" name="name" id="name" type="text" required={true} onChange={handleChange} value={updateUser.name} autoFocus />
+                            </div>
+                            <div className="col-lg-5-8 col-5-8">
+                                <label htmlFor="surname" className="col-lg-12 col-12">Surname</label>
+                                <input className="col-lg-12 col-12 form-control" name="surname" id="surname" type="text" required={true} onChange={handleChange} value={updateUser.surname} />
+                            </div>
+                            <div className="col-lg-5-8 col-5-8">
+                                <label htmlFor="userName" className="col-lg-12 col-12">Username</label>
+                                <input className="col-lg-12 col-12 form-control" name="userName" id="userName" type="text" required={true} onChange={handleChange} value={updateUser.userName} />
+                            </div>
+                            <div className="col-lg-5-8 col-5-8">
+                                <label htmlFor="email" className="col-lg-12 col-12">Email</label>
+                                <input className="col-lg-12 col-12 form-control" name="email" id="email" type="email" required={true} onChange={handleChange} value={updateUser.email} />
+                            </div>
+                            <div className="col-lg-5-8 col-5-8">
+                                <label htmlFor="phoneNumber" className="col-lg-12 col-12">Phone Number</label>
+                                <input className="col-lg-12 col-12 form-control" name="phoneNumber" id="phoneNumber" type="text" onChange={handleChange} value={updateUser.phoneNumber} />
+                            </div>
+                            <button className="col-lg-5-8 col-5-8 btn btn-success" type="submit">Update</button>
+                        </form>
                 }
 
             </div>

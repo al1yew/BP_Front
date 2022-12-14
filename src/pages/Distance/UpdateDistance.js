@@ -39,21 +39,20 @@ export default function UpdateDistance() {
     return (
         <section id='createfrequencyweightdistance'>
             {
-                !name &&
-                <div className="loader"></div>
+                !name ?
+                    <div className="loader"></div>
+                    :
+                    <div className="container">
+                        <ManipulateEntity
+                            entity="Distance"
+                            route="distances"
+                            isUpdate={true}
+                            id={id}
+                            entityName={name}
+                        />
+                    </div>
             }
-            {
-                name &&
-                <div className="container">
-                    <ManipulateEntity
-                        entity="Distance"
-                        route="distances"
-                        isUpdate={true}
-                        id={id}
-                        entityName={name}
-                    />
-                </div>
-            }
+
         </section >
     );
 }
