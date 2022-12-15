@@ -23,6 +23,7 @@ export default function Assessments() {
     // a potom axios zad paralelno shli poka loader krutitsa naprimer na 1 sekundu, ili je vkluchat loader poka response ne pridet naprimer
 
     //pagination ubrat iz obshego sort methoda, on perekluchayet stranicu s 20 rows, i potom posle response ubirayet 5 shtuk
+    // esli ya udalayu vse 10 assessmentov na stranice, on ne perekluchayet na predidushuyu stranicu mena, i nacinayet krutitsa
 
     const [formData, setFormData] = useState({
         weightId: 0,
