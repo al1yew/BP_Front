@@ -17,7 +17,7 @@ export default function Frequencies() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/frequencies/", {
+        axios.get("https://elgiz93-001-site2.htempurl.com/api/com/api/frequencies/", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -26,7 +26,7 @@ export default function Frequencies() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/frequencies/${id}`, {
+        axios.delete(`https://elgiz93-001-site2.htempurl.com/api/com/api/frequencies/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

@@ -44,7 +44,7 @@ export default function ResetPassword() {
             confirmNewPassword: reset.confirmNewPassword
         }
 
-        axios.post("http://localhost:37234/api/users/resetpassword", obj, {
+        axios.post("https://elgiz93-001-site2.htempurl.com/api/com/api/com/api/users/resetpassword", obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

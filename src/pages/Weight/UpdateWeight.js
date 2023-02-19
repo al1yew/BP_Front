@@ -17,7 +17,7 @@ export default function UpdateWeight() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:37234/api/weights/${id}`, {
+        axios.get(`https://elgiz93-001-site2.htempurl.com/api/weights/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

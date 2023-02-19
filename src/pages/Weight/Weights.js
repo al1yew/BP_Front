@@ -18,7 +18,7 @@ export default function Weights() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        axios.get("http://localhost:37234/api/weights/", {
+        axios.get("https://elgiz93-001-site2.htempurl.com/api/weights/", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -27,7 +27,7 @@ export default function Weights() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`http://localhost:37234/api/weights/${id}`, {
+        axios.delete(`https://elgiz93-001-site2.htempurl.com/api/weights/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

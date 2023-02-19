@@ -56,7 +56,7 @@ export default function Login() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        axios.post("http://localhost:37234/api/accounts/login", formData)
+        axios.post("https://elgiz93-001-site2.htempurl.com/api/accounts/login", formData)
             .then(res => {
                 localStorage.setItem("user", JSON.stringify(res.data));
                 setUser(res.data);

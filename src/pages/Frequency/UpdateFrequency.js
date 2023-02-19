@@ -17,7 +17,7 @@ export default function UpdateFrequency() {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:37234/api/frequencies/${id}`, {
+        axios.get(`https://elgiz93-001-site2.htempurl.com/api/tempurl.com/api/frequencies/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
