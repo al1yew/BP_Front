@@ -17,7 +17,7 @@ export default function UpdateDistance() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://bpriskassessment.azurewebsites.net/api/distances/${id}`, {
+        axios.get(`http://localhost:37234/api/distances/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

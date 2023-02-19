@@ -41,7 +41,7 @@ export default function CreateUser() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        axios.post(`https://bpriskassessment.azurewebsites.net/api/users`, newUser, {
+        axios.post(`http://localhost:37234/api/users`, newUser, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

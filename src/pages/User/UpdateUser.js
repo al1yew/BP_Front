@@ -28,7 +28,7 @@ export default function UpdateUser() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://bpriskassessment.azurewebsites.net/api/users/${id}`, {
+        axios.get(`http://localhost:37234/api/users/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -70,7 +70,7 @@ export default function UpdateUser() {
             phoneNumber: updateUser.phoneNumber,
         }
 
-        axios.put(`https://bpriskassessment.azurewebsites.net/api/users/${id}`, obj, {
+        axios.put(`http://localhost:37234/api/users/${id}`, obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

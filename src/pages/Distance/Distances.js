@@ -17,7 +17,7 @@ export default function Distances() {
     }
 
     useEffect(() => {
-        axios.get("https://bpriskassessment.azurewebsites.net/api/distances/", {
+        axios.get("http://localhost:37234/api/distances/", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -26,7 +26,7 @@ export default function Distances() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://bpriskassessment.azurewebsites.net/api/distances/${id}`, {
+        axios.delete(`http://localhost:37234/api/distances/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

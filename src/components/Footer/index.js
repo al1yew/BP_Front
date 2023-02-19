@@ -5,7 +5,7 @@ export default function Footer() {
                 <div className="container">
                     <div className="row all">
                         <div className="col-lg-4 col-8">
-                            © Build by <a href="https://www.linkedin.com/in/vasif-aliyev/">Vasif Aliyev</a> for BP
+                            © Developed by <a href="https://www.linkedin.com/in/vasif-aliyev/">Vasif Aliyev</a> for BP Company.
                         </div>
                         <div className="col-lg-4 col-4">
                             © All Rights Reserved.

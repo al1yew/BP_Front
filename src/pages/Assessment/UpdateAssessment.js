@@ -33,7 +33,7 @@ export default function UpdateAssessment() {
     });
 
     useEffect(() => {
-        axios.get(`https://bpriskassessment.azurewebsites.net/api/assessments/${id}`, {
+        axios.get(`http://localhost:37234/api/assessments/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -52,7 +52,7 @@ export default function UpdateAssessment() {
                 navigate(-1)
             })
 
-        axios.get("https://bpriskassessment.azurewebsites.net/api/assessments/getalldata", {
+        axios.get("http://localhost:37234/api/assessments/getalldata", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -81,7 +81,7 @@ export default function UpdateAssessment() {
 
         toastr.clear()
 
-        axios.put(`https://bpriskassessment.azurewebsites.net/api/assessments/${id}`, obj, {
+        axios.put(`http://localhost:37234/api/assessments/${id}`, obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

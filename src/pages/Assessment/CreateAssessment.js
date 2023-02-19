@@ -28,7 +28,7 @@ export default function CreateAssessment() {
     }
 
     useEffect(() => {
-        axios.get("https://bpriskassessment.azurewebsites.net/api/assessments/getalldata", {
+        axios.get("http://localhost:37234/api/assessments/getalldata", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -56,7 +56,7 @@ export default function CreateAssessment() {
 
         toastr.clear()
 
-        axios.post('https://bpriskassessment.azurewebsites.net/api/assessments', obj, {
+        axios.post('http://localhost:37234/api/assessments', obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

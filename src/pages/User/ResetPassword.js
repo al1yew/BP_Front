@@ -44,7 +44,7 @@ export default function ResetPassword() {
             confirmNewPassword: reset.confirmNewPassword
         }
 
-        axios.post("https://bpriskassessment.azurewebsites.net/api/users/resetpassword", obj, {
+        axios.post("http://localhost:37234/api/users/resetpassword", obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

@@ -12,18 +12,10 @@ export default function Assessments() {
         totalCount: 0
     });
 
-    //razobratsa s http i https netlify, xochet sertifikat, poiskat fake 
-    //posle togo kak zakonchu posmotret na yt full react project, pust stroyat ogromniy sayt react and api
-    //izuchit jwt auth and react, Claim shto takoe toje posmotret, kak eto s etim rabotayet
-
-    //stoit izuchit i prigotovit sebe na budusheye identity .net, gde budet svoy login, register, reset, confirm itd gotovim, budu 
-    //brat i ispolzovat svoy je kod pri rabote s druqimi proektami
-
-    // voobshe loader bolnaya tema, ego nujno vezde dobavit s setTimeout budto, shto bi posle odnogo najatiya srazu aktivirovalsa loader,
-    // a potom axios zad paralelno shli poka loader krutitsa naprimer na 1 sekundu, ili je vkluchat loader poka response ne pridet naprimer
-
     //pagination ubrat iz obshego sort methoda, on perekluchayet stranicu s 20 rows, i potom posle response ubirayet 5 shtuk
     // esli ya udalayu vse 10 assessmentov na stranice, on ne perekluchayet na predidushuyu stranicu mena, i nacinayet krutitsa
+
+    //update edennen sonra gozlemesin, srazu gaytarsin obratno, a to jdet 0.2 sekundi kajetsa
 
     const [formData, setFormData] = useState({
         weightId: 0,
@@ -51,19 +43,16 @@ export default function Assessments() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("https://bpriskassessment.azurewebsites.net/api/assessments/",
+        axios.get("http://localhost:37234/api/assessments/",
             {
                 headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
                     'Authorization': `Bearer ${user.token}`
                 },
                 params: formData
             })
             .then(res => setAssessments(res.data))
 
-        axios.get("https://bpriskassessment.azurewebsites.net/api/assessments/getalldata", {
+        axios.get("http://localhost:37234/api/assessments/getalldata", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -72,12 +61,9 @@ export default function Assessments() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://bpriskassessment.azurewebsites.net/api/assessments/${id}`,
+        axios.delete(`http://localhost:37234/api/assessments/${id}`,
             {
                 headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
                     'Authorization': `Bearer ${user.token}`
                 },
                 params: formData
@@ -99,12 +85,9 @@ export default function Assessments() {
     }
 
     function handleSort(e) {
-        axios.get(`https://bpriskassessment.azurewebsites.net/api/assessments/`,
+        axios.get(`http://localhost:37234/api/assessments/`,
             {
                 headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
                     'Authorization': `Bearer ${user.token}`
                 },
                 params: {

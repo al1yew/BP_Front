@@ -42,7 +42,7 @@ export default function ManipulateEntity(props) {
 
         props.isUpdate
             ?
-            axios.put(`https://bpriskassessment.azurewebsites.net/api/${props?.route}/${props?.id}`, obj, {
+            axios.put(`http://localhost:37234/api/${props?.route}/${props?.id}`, obj, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -64,7 +64,7 @@ export default function ManipulateEntity(props) {
                     }
                 })
             :
-            axios.post(`https://bpriskassessment.azurewebsites.net/api/${props?.route}`, entity, {
+            axios.post(`http://localhost:37234/api/${props?.route}`, entity, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
