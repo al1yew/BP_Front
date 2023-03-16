@@ -85,6 +85,7 @@ export default function Assessments() {
     }
 
     function handleSort(e) {
+        setAssessments({ query: [], totalCount: 0 })
         axios.get(`https://elgiz93-001-site3.htempurl.com/api/assessments/`,
             {
                 headers: {
