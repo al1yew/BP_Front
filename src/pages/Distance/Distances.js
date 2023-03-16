@@ -17,7 +17,7 @@ export default function Distances() {
     }
 
     useEffect(() => {
-        axios.get("https://elgiz93-001-site2.htempurl.com/api/com/api/distances/", {
+        axios.get("https://elgiz93-001-site3.htempurl.comcom/api/distances/", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -26,7 +26,7 @@ export default function Distances() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://elgiz93-001-site2.htempurl.com/api/com/api/distances/${id}`, {
+        axios.delete(`https://elgiz93-001-site3.htempurl.comcom/api/distances/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

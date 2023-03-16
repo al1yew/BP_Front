@@ -28,7 +28,7 @@ export default function UpdateUser() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://elgiz93-001-site2.htempurl.com/api/users/${id}`, {
+        axios.get(`https://elgiz93-001-site3.htempurl.comusers/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -70,7 +70,7 @@ export default function UpdateUser() {
             phoneNumber: updateUser.phoneNumber,
         }
 
-        axios.put(`https://elgiz93-001-site2.htempurl.com/api/users/${id}`, obj, {
+        axios.put(`https://elgiz93-001-site3.htempurl.comusers/${id}`, obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

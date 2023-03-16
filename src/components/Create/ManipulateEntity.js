@@ -42,7 +42,7 @@ export default function ManipulateEntity(props) {
 
         props.isUpdate
             ?
-            axios.put(`https://elgiz93-001-site2.htempurl.com/api/${props?.route}/${props?.id}`, obj, {
+            axios.put(`https://elgiz93-001-site3.htempurl.com${props?.route}/${props?.id}`, obj, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -64,7 +64,7 @@ export default function ManipulateEntity(props) {
                     }
                 })
             :
-            axios.post(`https://elgiz93-001-site2.htempurl.com/api/${props?.route}`, entity, {
+            axios.post(`https://elgiz93-001-site3.htempurl.com${props?.route}`, entity, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
