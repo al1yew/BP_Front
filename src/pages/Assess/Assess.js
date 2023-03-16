@@ -69,7 +69,7 @@ export default function Assess() {
         <section id='dropdownkeeper'>
             <div className="container">
                 <div className="row all">
-                    <p className="col-lg-12 col-12">Select your options from the dropdowns below in order to decide whether take an assessment or not.</p>
+                    <p className="col-lg-12 col-12">Select your options from the dropdowns below in order to decide whether to take an assessment or not.</p>
                     {
                         !data.weights.length ?
                             <div className="loader"></div>
