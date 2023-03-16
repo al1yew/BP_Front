@@ -20,7 +20,7 @@ export default function Users() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("https://elgiz93-001-site3.htempurl.comusers/getall",
+        axios.get("https://elgiz93-001-site3.htempurl.com/api/users/getall",
             {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -36,7 +36,7 @@ export default function Users() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://elgiz93-001-site3.htempurl.comusers/`, {
+        axios.delete(`https://elgiz93-001-site3.htempurl.com/api/users/`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             },

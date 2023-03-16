@@ -34,7 +34,7 @@ export default function UpdateLoggedUser() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("https://https://elgiz93-001-site3.htempurl.comusers/getbyname", {
+        axios.get("https://elgiz93-001-site3.htempurl.com/api/users/getbyname", {
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Content-Type": "application/json",
@@ -93,7 +93,7 @@ export default function UpdateLoggedUser() {
             phoneNumber: loggedUser.phoneNumber,
         }
 
-        axios.put(`https://elgiz93-001-site3.htempurl.comusers/${loggedUser.id}`, obj, {
+        axios.put(`https://elgiz93-001-site3.htempurl.com/api/users/${loggedUser.id}`, obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -136,7 +136,7 @@ export default function UpdateLoggedUser() {
             confirmNewPassword: password.confirmPassword
         }
 
-        axios.post("https://elgiz93-001-site3.htempurl.comusers/resetpassword", obj, {
+        axios.post("https://elgiz93-001-site3.htempurl.com/api/users/resetpassword", obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

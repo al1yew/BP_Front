@@ -28,7 +28,7 @@ export default function CreateAssessment() {
     }
 
     useEffect(() => {
-        axios.get("https://https://elgiz93-001-site3.htempurl.comassessments/getalldata", {
+        axios.get("https://elgiz93-001-site3.htempurl.com/api/assessments/getalldata", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -56,7 +56,7 @@ export default function CreateAssessment() {
 
         toastr.clear()
 
-        axios.post('https://https://elgiz93-001-site3.htempurl.comassessments', obj, {
+        axios.post('https://elgiz93-001-site3.htempurl.com/api/assessments', obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

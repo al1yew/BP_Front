@@ -41,7 +41,7 @@ export default function CreateUser() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        axios.post(`https://https://elgiz93-001-site3.htempurl.compi/users`, newUser, {
+        axios.post(`https://elgiz93-001-site3.htempurl.com/api/users`, newUser, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

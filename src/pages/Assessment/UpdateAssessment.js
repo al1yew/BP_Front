@@ -33,7 +33,7 @@ export default function UpdateAssessment() {
     });
 
     useEffect(() => {
-        axios.get(`https://elgiz93-001-site3.htempurl.comcom/api/assessments/${id}`, {
+        axios.get(`https://elgiz93-001-site3.htempurl.com/api/assessments/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -52,7 +52,7 @@ export default function UpdateAssessment() {
                 navigate(-1)
             })
 
-        axios.get("https://elgiz93-001-site3.htempurl.comcom/api/assessments/getalldata", {
+        axios.get("https://elgiz93-001-site3.htempurl.com/api/assessments/getalldata", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -81,7 +81,7 @@ export default function UpdateAssessment() {
 
         toastr.clear()
 
-        axios.put(`https://elgiz93-001-site3.htempurl.comcom/api/assessments/${id}`, obj, {
+        axios.put(`https://elgiz93-001-site3.htempurl.com/api/assessments/${id}`, obj, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }

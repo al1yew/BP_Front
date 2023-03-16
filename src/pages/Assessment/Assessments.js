@@ -52,7 +52,7 @@ export default function Assessments() {
             })
             .then(res => setAssessments(res.data))
 
-        axios.get("https://elgiz93-001-site3.htempurl.comassessments/getalldata", {
+        axios.get("https://elgiz93-001-site3.htempurl.com/api/assessments/getalldata", {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
@@ -61,7 +61,7 @@ export default function Assessments() {
     }, [])
 
     function handleDelete(id) {
-        axios.delete(`https://elgiz93-001-site3.htempurl.comassessments/${id}`,
+        axios.delete(`https://elgiz93-001-site3.htempurl.com/api/assessments/${id}`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
@@ -85,7 +85,7 @@ export default function Assessments() {
     }
 
     function handleSort(e) {
-        axios.get(`https://elgiz93-001-site3.htempurl.comassessments/`,
+        axios.get(`https://elgiz93-001-site3.htempurl.com/api/assessments/`,
             {
                 headers: {
                     'Authorization': `Bearer ${user.token}`

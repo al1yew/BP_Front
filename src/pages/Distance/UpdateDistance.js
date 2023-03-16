@@ -17,7 +17,7 @@ export default function UpdateDistance() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://elgiz93-001-site3.htempurl.comdistances/${id}`, {
+        axios.get(`https://elgiz93-001-site3.htempurl.com/api/distances/${id}`, {
             headers: {
                 'Authorization': `Bearer ${user.token}`
             }
