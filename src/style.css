@@ -1573,6 +1573,11 @@ a:hover {
   margin-bottom: 50px;
 }
 
+#tablecontainer th,
+#tablecontainer td {
+  vertical-align: middle;
+}
+
 #tablecontainer .pagination {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1640,6 +1645,14 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#tablecontainer .all .top .middle select {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 8px;
+  outline: none;
+  cursor: pointer;
 }
 
 #tablecontainer .all .tablecontainer {

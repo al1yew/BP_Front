@@ -557,6 +557,11 @@ a {
     position: relative;
     margin-bottom: 50px;
 
+    th,
+    td {
+        vertical-align: middle;
+    }
+
     .pagination {
         display: flex;
         justify-content: center;
@@ -604,6 +609,14 @@ a {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
+
+                select {
+                    border-radius: 5px;
+                    border: 1px solid black;
+                    padding: 8px;
+                    outline: none;
+                    cursor: pointer;
+                }
             }
         }
 

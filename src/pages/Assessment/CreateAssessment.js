@@ -61,7 +61,7 @@ export default function CreateAssessment() {
                 'Authorization': `Bearer ${user.token}`
             }
         })
-            .then(res => toastr.success("Created!"))
+            .then(() => toastr.success("Created!"))
             .catch(err => {
                 if (err?.response?.data?.errors) {
                     Object.values(err?.response?.data?.errors).forEach(er => {

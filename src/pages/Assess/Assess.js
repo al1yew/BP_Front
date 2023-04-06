@@ -56,6 +56,7 @@ export default function Assess() {
                     })
                 }
                 else {
+                    setResult(2);
                     toastr.error(err?.response?.data)
                 }
             })
